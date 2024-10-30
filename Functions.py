@@ -110,8 +110,10 @@ class Ui_Form(object):
         # Determine which dataset is selected
         if self.radioButton.isChecked():
             self.executable = "lenet5-main"  # Executable for Cifar-10
+            self.python_file = "lenet5-inference.py"
         elif self.radioButton_2.isChecked():
             self.executable = "fc3-main"  # Executable for MNIST
+            self.python_file = "fc3-inference.py"
         else:
             self.textBrowser.append("请先选择一个功能")
             return
@@ -125,21 +127,61 @@ class Ui_Form(object):
             process = subprocess.Popen(executable, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             stdout, stderr = process.communicate()
             if stderr:
-                self.textBrowser.append(f"错误：{stderr}")
+                self.textBrowser.append(f"<span style='color: red;'>错误：{stderr}</span>")
             else:
                 self.textBrowser.append(stdout)
-                self.process_output(stdout)  # Process the output for the heatmap
+                self.process_output(stdout)# 处理可执行文件的输出 绘制热力图
+                accuracy = self.extract_accuracy(stdout)
+                python_accuracy = self.run_python_file(self.python_file)
+                self.compare_accuracies(accuracy, python_accuracy)
         except Exception as e:
-            self.textBrowser.append(f"运行失败：{str(e)}")
+            self.textBrowser.append(f"<span style='color: red;'>运行失败：{str(e)}</span>")
+
+    def extract_accuracy(self, output):
+        # 寻找可执行文件输出中的准确率
+        for line in output.splitlines():
+            if "Accuracy:" in line:
+                accuracy_str = line.split("Accuracy:")[-1].strip()
+                return float(accuracy_str.strip('%'))  # Convert to float and return
+        return None
+
+    def run_python_file(self, python_file):
+        # 运行对应的python文件
+        try:
+            process = subprocess.Popen(['python', python_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            stdout, stderr = process.communicate()
+            if stderr:
+                self.textBrowser.append(f"<span style='color: red;'>Python文件错误：{stderr}</span>")
+                return None
+            
+            # Extract accuracy from the Python file output
+            for line in stdout.splitlines():
+                if "Accuracy of the network on the" in line:
+                    accuracy_str = line.split(":")[-1].strip()
+                    return float(accuracy_str.strip('%'))  # Convert to float and return
+        except Exception as e:
+            self.textBrowser.append(f"<span style='color: red;'>运行Python文件失败：{str(e)}</span>")
+        return None
+
+    def compare_accuracies(self, exec_accuracy, python_accuracy):
+        # 计算两个文件的准确率差值并在textBrowser显示
+        if exec_accuracy is not None and python_accuracy is not None:
+            difference = exec_accuracy - python_accuracy
+            output = f"""
+            <span style='color: blue;'>可执行文件准确率：{exec_accuracy:.2f}%</span><br>
+            <span style='color: blue;'>Python准确率：{python_accuracy:.2f}%</span><br>
+            <span style='color: blue;'>相差：{difference:.2f}%</span>
+            """
+            self.textBrowser.append(output)
 
     def process_output(self, output):
-        # Parse the output to find the heatmap
+        # 处理可执行文件的输出 寻找数字热力图
         lines = output.splitlines()
         heatmap = None
         
         for line in lines:
             if "Result:" in line:
-                # Assuming the heatmap follows the "Result:" line
+                # 数字热力图在“Result:”下一行
                 heatmap_data = lines[lines.index(line) + 1:lines.index(line) + 11]  # Get next 10 lines
                 heatmap = np.array([list(map(int, row.split())) for row in heatmap_data])
                 break
@@ -161,6 +203,6 @@ class Ui_Form(object):
         ax.set_xticks(np.arange(10))
         ax.set_yticks(np.arange(10))
         # 设置边距以使图形水平居中
-        plt.subplots_adjust(left=0.2, right=0.8, top=0.9, bottom=0.1)  # 调整边距
+        plt.subplots_adjust(left=0.2, right=0.8, top=0.9, bottom=0.1)
         # 显示图形
         self.canvas.draw()
