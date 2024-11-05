@@ -109,11 +109,11 @@ class Ui_Form(object):
     def run_selected_dataset(self):
         # Determine which dataset is selected
         if self.radioButton.isChecked():
-            self.executable = "lenet5-main"  # Executable for Cifar-10
-            self.python_file = "lenet5-inference.py"
+            self.executable = "../build/bin/lenet5-run"  # Executable for Cifar-10
+            self.python_file = "../test_network/LeNet-5/lenet5-inference.py"
         elif self.radioButton_2.isChecked():
-            self.executable = "fc3-main"  # Executable for MNIST
-            self.python_file = "fc3-inference.py"
+            self.executable = "../build/bin/fc3-run"  # Executable for MNIST
+            self.python_file = "../test_network/Fc-3/fc3-inference.py"
         else:
             self.textBrowser.append("请先选择一个功能")
             return
@@ -125,6 +125,7 @@ class Ui_Form(object):
         # Call the executable and capture its output
         try:
             process = subprocess.Popen(executable, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            
             stdout, stderr = process.communicate()
             if stderr:
                 self.textBrowser.append(f"<span style='color: red;'>错误：{stderr}</span>")
@@ -171,11 +172,11 @@ class Ui_Form(object):
     def compare_accuracies(self, exec_accuracy, python_accuracy):
         # 计算两个文件的准确率差值并在textBrowser显示
         if exec_accuracy is not None and python_accuracy is not None:
-            difference = exec_accuracy - python_accuracy
+            difference = (python_accuracy - exec_accuracy) / python_accuracy
             output = f"""
-            <span style='color: blue;'>可执行文件准确率：{exec_accuracy:.2f}%</span><br>
-            <span style='color: blue;'>Python准确率：{python_accuracy:.2f}%</span><br>
-            <span style='color: blue;'>相差：{difference:.2f}%</span>
+            <span style='color: blue;'>PIM推理准确率：{exec_accuracy:.2f}%</span><br>
+            <span style='color: blue;'>Torch推理准确率：{python_accuracy:.2f}%</span><br>
+            <span style='color: blue;'>PIM相较Torch推理准确率下降：{difference:.2f}%</span>
             """
             self.textBrowser.append(output)
 
@@ -207,6 +208,9 @@ class Ui_Form(object):
         # 设置刻度
         ax.set_xticks(np.arange(10))
         ax.set_yticks(np.arange(10))
+        ax.set_title("热力图")
+        for (i, j), value in np.ndenumerate(heatmap):
+            ax.text(j, i, f'{value}', ha='center', va='center', color='black', fontsize=7)
         # 设置边距以使图形水平居中
         plt.subplots_adjust(left=0.2, right=0.8, top=0.9, bottom=0.1)
         # 显示图形
