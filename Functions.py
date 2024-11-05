@@ -141,8 +141,13 @@ class Ui_Form(object):
         # 寻找可执行文件输出中的准确率
         for line in output.splitlines():
             if "Accuracy:" in line:
-                accuracy_str = line.split("Accuracy:")[-1].strip()
-                return float(accuracy_str.strip('%'))  # Convert to float and return
+                # 只提取百分比的数字部分
+                accuracy_str = line.split("Accuracy:")[-1].strip().split('%')[0]
+                try:
+                    return float(accuracy_str)  # 转换为浮点数并返回
+                except ValueError:
+                    self.textBrowser.append("<span style='color: red;'>无法解析准确率值</span>")
+                    return None
         return None
 
     def run_python_file(self, python_file):

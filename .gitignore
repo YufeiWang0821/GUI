@@ -8,3 +8,8 @@ fc3-main.cpp
 
 lenet5-inference.py
 lenet5-main.cpp
+
+ExeTest
+ExeTest.cpp
+PyTest.py
+FunctionsTest.py
