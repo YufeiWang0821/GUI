@@ -1,8 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow,QApplication,QWidget
-from Functions import Ui_Form
+# from Functions import Ui_Form
 # from FunctionsTest import Ui_Form
-#from HeatmapTest import Ui_Form
+from HeatmapTest import Ui_Form
 #from Outlook import Ui_Form
 
 class MyMainWindow(QMainWindow,Ui_Form):
