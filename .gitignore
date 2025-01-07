@@ -13,3 +13,5 @@ ExeTest
 ExeTest.cpp
 PyTest.py
 FunctionsTest.py
+
+*.ui
