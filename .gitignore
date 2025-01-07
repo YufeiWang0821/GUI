@@ -15,3 +15,5 @@ PyTest.py
 FunctionsTest.py
 
 *.ui
+*.png
+*.txt
