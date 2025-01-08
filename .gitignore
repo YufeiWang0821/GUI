@@ -17,3 +17,4 @@ FunctionsTest.py
 *.ui
 *.png
 *.txt
+.DS_store
