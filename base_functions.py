@@ -254,9 +254,9 @@ class Ui_base(object):
         # 根据选中的 RadioButton 创建对应的窗口实例
         if self.subUi_choice() == 0:# 调用脚本窗口
             window_class = Ui_Window1
-        elif self.subUi_choice() == 0:# 调用磨损均衡窗口
+        elif self.subUi_choice() == 1:# 调用磨损均衡窗口
             window_class = Ui_Window2
-        elif self.subUi_choice() == 0:# 调用编译器窗口
+        elif self.subUi_choice() == 2:# 调用编译器窗口
             window_class = Ui_Window3
         else:
             QMessageBox.warning(None, "选择提示", "请先选择一个选项！")

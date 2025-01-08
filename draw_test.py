@@ -14,7 +14,7 @@ class DrawingArea(QWidget):
         self.setFixedSize(300, 300)
         self.last_point = QPoint()
         self.image = QImage(self.size(), QImage.Format_RGB888)
-        self.image.fill(Qt.white)  # 设置背景为白色
+        self.image.fill(Qt.black)  # 设置背景为白色
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -27,7 +27,7 @@ class DrawingArea(QWidget):
     def mouseMoveEvent(self, event):
         if event.buttons() & Qt.LeftButton:
             painter = QPainter(self.image)
-            painter.setPen(QPen(Qt.black, 5, Qt.SolidLine))
+            painter.setPen(QPen(Qt.white, 5, Qt.SolidLine))
             painter.drawLine(self.last_point, event.pos())
             self.last_point = event.pos()
             self.update()
@@ -36,13 +36,8 @@ class DrawingArea(QWidget):
         pass
 
     def clear(self):
-        self.image.fill(Qt.white)
+        self.image.fill(Qt.black)
         self.update()
-
-    # def save_image(self):
-    #     pixmap = QPixmap(self.size())
-    #     self.render(pixmap)
-    #     pixmap.save("drawing.png", "PNG")  # 保存图像为PNG格式
 
     def process_and_save(self):
         self.image.save("output_image.png")
@@ -50,23 +45,26 @@ class DrawingArea(QWidget):
         # 将绘制区域缩放至28x28
         scaled_image = self.image.scaled(28, 28, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
-        # 将QImage转换为NumPy数组
-        # 注意QImage.pixelFormat()为QImage.Format_RGB888
-        scaled_image_array = np.array([
-            scaled_image.pixel(x, y) & 0xFF for y in range(28) for x in range(28)
-        ], dtype=np.uint8)  # 这里的y, x顺序确保读取时按正确方向存储数据
-
-        # 将scaled_image_array转换为float32类型
-        scaled_image_array = scaled_image_array.astype(np.float32)
-
-        # 进行缩放处理（例如，除以某个值进行标准化）
-        scaled_image_array = (scaled_image_array / 0.0311).round().astype(np.int8)
-
-        # 重新整形为28x28的矩阵
-        pixels = scaled_image_array.reshape(28, 28)
-
-        # 保存矩阵到txt文件
-        np.savetxt('output_matrix.txt', pixels, fmt='%d')
+        # 将图像转换为灰度图像
+        gray_image = scaled_image.convertToFormat(QImage.Format_Grayscale8)
+        
+        width = gray_image.width()
+        height = gray_image.height()
+        
+        # 从QImage获取像素数据
+        pixels = np.array([gray_image.pixel(x, y) & 0xFF for y in range(height) for x in range(width)])
+        pixels = pixels.reshape((height, width))
+        
+        # 将像素值归一化到[-1, 1]范围，黑色是-1，白色是1
+        pixels = (pixels / 127.5) - 1.0  # 将像素值从[0, 255]转换到[-1, 1]
+        
+        # 将数据保存为MNIST格式，可以使用torch保存为Tensor
+        mnist_tensor = torch.tensor(pixels, dtype=torch.float32).unsqueeze(0).unsqueeze(0)  # 添加batch和channel维度
+        print(mnist_tensor.shape)
+        np.savetxt("image_matrix.txt", mnist_tensor.squeeze().numpy(), fmt="%.4f", delimiter=" ")
+        mnist_tensor = (mnist_tensor / 0.0311).round().to(torch.int8)
+        print(mnist_tensor.shape)
+        np.savetxt("output_matrix.txt", mnist_tensor.squeeze().numpy(), fmt="%d", delimiter=" ")
 
 
 class MainWindow(QWidget):
