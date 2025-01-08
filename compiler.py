@@ -60,8 +60,8 @@ class Ui_Compiler(object):
         self.verticalLayout_2.addWidget(self.radioButton_4, 0, QtCore.Qt.AlignHCenter)
 
         # 运行按钮布局
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.horizontalLayout0 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout0.setObjectName("horizontalLayout")
         
         self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton.setFont(font)
@@ -79,8 +79,8 @@ class Ui_Compiler(object):
             }
             """
         )
-        self.horizontalLayout.addWidget(self.pushButton)
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.horizontalLayout0.addWidget(self.pushButton)
+        self.verticalLayout_2.addLayout(self.horizontalLayout0)
 
         # 运行结果标签
         self.label_2 = QtWidgets.QLabel(self.layoutWidget)
@@ -90,48 +90,43 @@ class Ui_Compiler(object):
         self.label_2.setObjectName("label_2")
         self.verticalLayout_2.addWidget(self.label_2, 0, QtCore.Qt.AlignHCenter)
 
-        # 热力图组件
-        self.figure = plt.figure(facecolor="#f5f5f5")
-        self.canvas = FigureCanvas(self.figure)
-        #self.verticalLayout_2.addWidget(self.canvas)
-
-        # 水平布局，用于排列热力图和左侧组件
         self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
-
         # 新增的左侧组件部分
-        self.left_layout = QtWidgets.QVBoxLayout()  # 新增垂直布局
-        
+        self.left_layout = QtWidgets.QVBoxLayout()
         # 图片显示框
         self.image_label = QtWidgets.QLabel(self.layoutWidget)
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.left_layout.addWidget(self.image_label)
-
-        # 输入框
-        self.input_line = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_line.setPlaceholderText("请输入图片序号")
-        #self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
-        self.left_layout.addWidget(self.input_line)
-
         # 信息框
         self.info_label = QtWidgets.QLabel(self.layoutWidget)
         self.left_layout.addWidget(self.info_label)
-
-        # 将左侧组件布局加入到主布局
+        # 输入框
+        self.input_line = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_line.setPlaceholderText("请输入图片序号")
+        font.setPointSize(10)
+        self.input_line.setFont(font)
+        self.input_line.setStyleSheet("background-color: #ffffff; border: 1px solid #cccccc; padding: 10px;")
+        #self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
+        self.left_layout.addWidget(self.input_line)
+        #左侧组件设置
+        self.image_label.setFixedWidth(250)
+        self.info_label.setFixedWidth(250)
+        self.input_line.setFixedWidth(250)
         self.horizontalLayout.addLayout(self.left_layout)
 
+        # 热力图组件
+        self.figure = plt.figure(facecolor="#f5f5f5")
+        self.canvas = FigureCanvas(self.figure)
         # 将热力图组件放入一个QWidget容器中
         self.canvas_widget = QtWidgets.QWidget(self.layoutWidget)
         self.canvas_layout = QtWidgets.QVBoxLayout(self.canvas_widget)
         self.canvas_layout.addWidget(self.canvas)
-
         # 将canvas的QWidget容器加入到水平布局
         self.horizontalLayout.addWidget(self.canvas_widget)
-        #self.horizontalLayout.addLayout(self.canvas)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         # 输出区域
         self.textBrowser = QtWidgets.QTextBrowser(self.layoutWidget)
-        font.setPointSize(10)
         self.textBrowser.setFont(font)
         self.textBrowser.setStyleSheet("background-color: #ffffff; border: 1px solid #cccccc; padding: 10px;")
         self.textBrowser.setObjectName("textBrowser")

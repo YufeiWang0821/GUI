@@ -15,5 +15,5 @@ PyTest.py
 FunctionsTest.py
 
 *.ui
-output_image.png
+*.png
 *.txt

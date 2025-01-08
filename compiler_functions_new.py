@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from draw import Draw
+import re
 
 class Ui_Compiler(object):
     def setupUi(self, Form):
@@ -12,6 +14,9 @@ class Ui_Compiler(object):
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
         Form.setMinimumSize(QtCore.QSize(700, 800))
         Form.setMaximumSize(QtCore.QSize(700, 800))
+
+        self.timer = QtCore.QTimer(self)
+        self.timer.setInterval(1000)  # 每秒刷新一次
 
         self.layoutWidget = QtWidgets.QWidget(Form)
         self.layoutWidget.setGeometry(QtCore.QRect(50, 20, 600, 700))
@@ -50,12 +55,18 @@ class Ui_Compiler(object):
         self.radioButton_3 = QtWidgets.QRadioButton(self.layoutWidget)
         self.radioButton_3.setFont(font)
         self.radioButton_3.setStyleSheet("color: #555555;")
-        self.radioButton_3.setObjectName("radioButton_2")
+        self.radioButton_3.setObjectName("radioButton_3")
         self.verticalLayout_2.addWidget(self.radioButton_3, 0, QtCore.Qt.AlignHCenter)
 
+        self.radioButton_4 = QtWidgets.QRadioButton(self.layoutWidget)
+        self.radioButton_4.setFont(font)
+        self.radioButton_4.setStyleSheet("color: #555555;")
+        self.radioButton_4.setObjectName("radioButton_4")
+        self.verticalLayout_2.addWidget(self.radioButton_4, 0, QtCore.Qt.AlignHCenter)
+
         # 运行按钮布局
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.horizontalLayout0 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout0.setObjectName("horizontalLayout")
         
         self.pushButton = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButton.setFont(font)
@@ -73,8 +84,8 @@ class Ui_Compiler(object):
             }
             """
         )
-        self.horizontalLayout.addWidget(self.pushButton)
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.horizontalLayout0.addWidget(self.pushButton)
+        self.verticalLayout_2.addLayout(self.horizontalLayout0)
 
         # 运行结果标签
         self.label_2 = QtWidgets.QLabel(self.layoutWidget)
@@ -84,54 +95,50 @@ class Ui_Compiler(object):
         self.label_2.setObjectName("label_2")
         self.verticalLayout_2.addWidget(self.label_2, 0, QtCore.Qt.AlignHCenter)
 
-        # 热力图组件
-        self.figure = plt.figure(facecolor="#f5f5f5")
-        self.canvas = FigureCanvas(self.figure)
-        #self.verticalLayout_2.addWidget(self.canvas)
-
-        # 水平布局，用于排列热力图和左侧组件
         self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
-
         # 新增的左侧组件部分
-        self.left_layout = QtWidgets.QVBoxLayout()  # 新增垂直布局
-        
+        self.left_layout = QtWidgets.QVBoxLayout()
         # 图片显示框
         self.image_label = QtWidgets.QLabel(self.layoutWidget)
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.left_layout.addWidget(self.image_label)
-
-        # 输入框
-        self.input_line = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_line.setPlaceholderText("请输入图片序号")
-        #self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
-        self.left_layout.addWidget(self.input_line)
-
         # 信息框
         self.info_label = QtWidgets.QLabel(self.layoutWidget)
         self.left_layout.addWidget(self.info_label)
-
-        # 将左侧组件布局加入到主布局
+        # 输入框
+        self.input_line = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_line.setPlaceholderText("请输入图片序号")
+        font.setPointSize(10)
+        self.input_line.setFont(font)
+        self.input_line.setStyleSheet("background-color: #ffffff; border: 1px solid #cccccc; padding: 10px;")
+        self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
+        self.left_layout.addWidget(self.input_line)
+        #左侧组件设置
+        self.image_label.setFixedWidth(250)
+        self.info_label.setFixedWidth(250)
+        self.input_line.setFixedWidth(250)
         self.horizontalLayout.addLayout(self.left_layout)
 
+        # 热力图组件
+        self.figure = plt.figure(facecolor="#f5f5f5")
+        self.canvas = FigureCanvas(self.figure)
         # 将热力图组件放入一个QWidget容器中
         self.canvas_widget = QtWidgets.QWidget(self.layoutWidget)
         self.canvas_layout = QtWidgets.QVBoxLayout(self.canvas_widget)
         self.canvas_layout.addWidget(self.canvas)
-
         # 将canvas的QWidget容器加入到水平布局
         self.horizontalLayout.addWidget(self.canvas_widget)
-        #self.horizontalLayout.addLayout(self.canvas)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         # 输出区域
         self.textBrowser = QtWidgets.QTextBrowser(self.layoutWidget)
-        font.setPointSize(10)
         self.textBrowser.setFont(font)
         self.textBrowser.setStyleSheet("background-color: #ffffff; border: 1px solid #cccccc; padding: 10px;")
         self.textBrowser.setObjectName("textBrowser")
         self.textBrowser.setMinimumHeight(200)
         self.verticalLayout_2.addWidget(self.textBrowser)
 
+        # 设置文本内容和按钮事件
         self.retranslateUi(Form)
         self.pushButton.clicked.connect(self.run_selected_dataset)  # Connect button to method
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -144,6 +151,8 @@ class Ui_Compiler(object):
         self.label.setText(_translate("Form", "请选择功能"))
         self.radioButton.setText(_translate("Form", "LeNet-5 Inference on CIFAR10"))
         self.radioButton_2.setText(_translate("Form", "FC-3 Inference on MNIST"))
+        self.radioButton_3.setText(_translate("Form", "SNN Inference"))
+        self.radioButton_4.setText(_translate("Form", "FC-3 手写数字识别"))
         self.pushButton.setText(_translate("Form", "运行指定功能"))
         self.label_2.setText(_translate("Form", "运行结果"))
 
@@ -151,93 +160,65 @@ class Ui_Compiler(object):
         # Determine which dataset is selected
         if self.radioButton.isChecked():
             self.executable = "../build/bin/lenet5-run"  # Executable for Cifar-10
-            self.python_file = "../test_network/LeNet-5/lenet5-inference.py"
+            self.hmsize = 10
+            self.run_executable(self.executable)
         elif self.radioButton_2.isChecked():
             self.executable = "../build/bin/fc3-run"  # Executable for MNIST
-            self.python_file = "../test_network/Fc-3/fc3-inference.py"
+            self.hmsize = 10
+            self.run_executable(self.executable)
+        elif self.radioButton_3.isChecked():
+            self.executable = "../build/bin/snn-run"
+            self.hmsize = 11
+            self.run_executable(self.executable)
+        elif self.radioButton_4.isChecked():
+            self.subWindow = Draw()  # 创建子界面实例
+            self.subWindow.show()  # 显示子界面
         else:
             self.textBrowser.append("请先选择一个功能")
             return
-        
-        # Run the selected executable
-        self.run_executable(self.executable)
 
     def run_executable(self, executable):
-        # Call the executable and capture its output
-        try:
-            process = subprocess.Popen(executable, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            
-            stdout, stderr = process.communicate()
-            if stderr:
-                self.textBrowser.append(f"<span style='color: red;'>错误：{stderr}</span>")
-            else:
-                self.textBrowser.append(stdout)
-                self.process_output(stdout)# 处理可执行文件的输出 绘制热力图
-                accuracy = self.extract_accuracy(stdout)
-                python_accuracy = self.run_python_file(self.python_file)
-                self.compare_accuracies(accuracy, python_accuracy)
-        except Exception as e:
-            self.textBrowser.append(f"<span style='color: red;'>运行失败：{str(e)}</span>")
+        # 创建 QProcess
+        self.timer_started = False
+        self.process = QtCore.QProcess(self)
+        self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
+        self.process.start(executable)  # 替换为你的可执行文件路径
 
-    def extract_accuracy(self, output):
-        # 寻找可执行文件输出中的准确率
-        for line in output.splitlines():
-            if "Accuracy:" in line:
-                # 只提取百分比的数字部分
-                accuracy_str = line.split("Accuracy:")[-1].strip().split('%')[0]
-                try:
-                    return float(accuracy_str)  # 转换为浮点数并返回
-                except ValueError:
-                    self.textBrowser.append("<span style='color: red;'>无法解析准确率值</span>")
-                    return None
-        return None
-
-    def run_python_file(self, python_file):
-        # 运行对应的python文件
-        try:
-            process = subprocess.Popen(['python', python_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            stdout, stderr = process.communicate()
-            if stderr:
-                self.textBrowser.append(f"<span style='color: red;'>Python文件错误：{stderr}</span>")
-                return None
-            
-            # Extract accuracy from the Python file output
-            for line in stdout.splitlines():
-                if "Accuracy of the network on the" in line:
-                    accuracy_str = line.split(":")[-1].strip()
-                    return float(accuracy_str.strip('%'))  # Convert to float and return
-        except Exception as e:
-            self.textBrowser.append(f"<span style='color: red;'>运行Python文件失败：{str(e)}</span>")
-        return None
-
-    def compare_accuracies(self, exec_accuracy, python_accuracy):
-        # 计算两个文件的准确率差值并在textBrowser显示
-        if exec_accuracy is not None and python_accuracy is not None:
-            difference = (python_accuracy - exec_accuracy) / python_accuracy
-            output = f"""
-            <span style='color: blue;'>PIM推理准确率：{exec_accuracy:.2f}%</span><br>
-            <span style='color: blue;'>Torch推理准确率：{python_accuracy:.2f}%</span><br>
-            <span style='color: blue;'>PIM相较Torch推理准确率下降：{difference:.2f}%</span>
-            """
-            self.textBrowser.append(output)
-
-    def process_output(self, output):
-        # 处理可执行文件的输出 寻找数字热力图
+    def on_readyReadStandardOutput(self):
+        output = self.process.readAllStandardOutput().data().decode()
+        self.textBrowser.append(output)  # 实时更新textBrowser
+         # 使用正则表达式解析每行输出
         lines = output.splitlines()
-        heatmap = None
-        
+        self.predictions = {}
         for line in lines:
-            if "Result:" in line:
-                # 数字热力图在“Result:”下一行
-                heatmap_data = lines[lines.index(line) + 1:lines.index(line) + 11]  # Get next 10 lines
-                heatmap = np.array([list(map(int, row.split())) for row in heatmap_data])
-                break
+            match = re.match(r"Image name: (\S+)\s+Label: (\d+)\s+Predicted: (\d+)", line)
+            if match:
+                image_name, label, predicted = match.groups()
+                self.predictions[image_name] = {"label": int(label), "predicted": int(predicted)}
+                if not self.timer_started:
+                    self.timer_started = True
+                    self.timer.start()
+                    self.timer.timeout.connect(self.update_heatmap)
+
+    def update_heatmap(self):
+        print("update_heatmap")
+        # 假设 self.predictions 字典存储了每张图片的预测情况
+        # 每项存储结构 {'label': true_label, 'predicted': predicted_label}
         
-        if heatmap is not None:
-            self.draw_heatmap(heatmap)
-        else:
-            self.textBrowser.append("未找到热力图数据")
-        
+        # 初始化一个10x10的矩阵，表示10个类别的混淆矩阵
+        confusion_matrix = np.zeros((self.hmsize, self.hmsize), dtype=int)
+
+        # 遍历每一张图片的预测结果
+        for image_name, data in self.predictions.items():
+            true_label = data["label"]
+            predicted_label = data["predicted"]
+            
+            # 更新混淆矩阵的对应位置
+            confusion_matrix[true_label][predicted_label] += 1
+
+        # 绘制热力图
+        self.draw_heatmap(confusion_matrix)
+
     def draw_heatmap(self, heatmap):
         # 清空之前的画布
         self.figure.clear()
@@ -247,8 +228,8 @@ class Ui_Compiler(object):
         # 添加颜色条
         plt.colorbar(cax)
         # 设置刻度
-        ax.set_xticks(np.arange(10))
-        ax.set_yticks(np.arange(10))
+        ax.set_xticks(np.arange(self.hmsize))
+        ax.set_yticks(np.arange(self.hmsize))
         ax.set_title("热力图")
         for (i, j), value in np.ndenumerate(heatmap):
             ax.text(j, i, f'{value}', ha='center', va='center', color='black', fontsize=7)
@@ -256,3 +237,44 @@ class Ui_Compiler(object):
         plt.subplots_adjust(left=0.2, right=0.8, top=0.9, bottom=0.1)
         # 显示图形
         self.canvas.draw()
+    
+    def update_image(self):
+        # 清空图片
+        self.image_label.clear()
+
+        # 检查 predictions 是否为空
+        if not self.predictions:
+            self.info_label.setText("错误：没有可用的预测数据！")
+            return
+        # 获取用户输入的图片序号
+        try:
+            image_index = int(self.input_line.text())  # 获取输入框中的序号，并尝试转换为整数
+        except ValueError:
+            self.info_label.setText("错误：请输入有效的数字序号！")
+            return
+        # 检查序号是否合法
+        if image_index < 0 or image_index >= len(self.predictions):
+            self.info_label.setText("错误：序号超出范围！")
+            return
+        if self.radioButton.isChecked():
+            dataset_name = "CIFAR10"
+        elif self.radioButton_2.isChecked():
+            dataset_name = "MNIST"
+        else:
+            self.info_label.setText("错误：当前选项没有可显示图片！")
+
+        # 如果序号合法，显示对应的图片和预测数据
+        image_path = f"data\{dataset_name}\\test_{image_index}.png"
+        try:
+            # 尝试加载图片
+            pixmap = QtGui.QPixmap(image_path)
+            if pixmap.isNull():
+                self.info_label.setText(f"错误：无法加载图片 test_{image_index}.png")
+                return
+            self.image_label.setPixmap(pixmap)
+        except Exception as e:
+            self.info_label.setText(f"错误：加载图片时出现问题 ({str(e)})")
+            return
+        # 显示对应的预测数据
+        prediction_data = self.predictions[image_index]
+        self.info_label.setText(f"预测数据：{prediction_data}")
