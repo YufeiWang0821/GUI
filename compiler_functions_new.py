@@ -47,6 +47,12 @@ class Ui_Compiler(object):
         self.radioButton_2.setObjectName("radioButton_2")
         self.verticalLayout_2.addWidget(self.radioButton_2, 0, QtCore.Qt.AlignHCenter)
 
+        self.radioButton_3 = QtWidgets.QRadioButton(self.layoutWidget)
+        self.radioButton_3.setFont(font)
+        self.radioButton_3.setStyleSheet("color: #555555;")
+        self.radioButton_3.setObjectName("radioButton_2")
+        self.verticalLayout_2.addWidget(self.radioButton_3, 0, QtCore.Qt.AlignHCenter)
+
         # 运行按钮布局
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -81,8 +87,43 @@ class Ui_Compiler(object):
         # 热力图组件
         self.figure = plt.figure(facecolor="#f5f5f5")
         self.canvas = FigureCanvas(self.figure)
-        self.verticalLayout_2.addWidget(self.canvas)
+        #self.verticalLayout_2.addWidget(self.canvas)
+
+        # 水平布局，用于排列热力图和左侧组件
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+
+        # 新增的左侧组件部分
+        self.left_layout = QtWidgets.QVBoxLayout()  # 新增垂直布局
         
+        # 图片显示框
+        self.image_label = QtWidgets.QLabel(self.layoutWidget)
+        self.image_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.left_layout.addWidget(self.image_label)
+
+        # 输入框
+        self.input_line = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_line.setPlaceholderText("请输入图片序号")
+        #self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
+        self.left_layout.addWidget(self.input_line)
+
+        # 信息框
+        self.info_label = QtWidgets.QLabel(self.layoutWidget)
+        self.left_layout.addWidget(self.info_label)
+
+        # 将左侧组件布局加入到主布局
+        self.horizontalLayout.addLayout(self.left_layout)
+
+        # 将热力图组件放入一个QWidget容器中
+        self.canvas_widget = QtWidgets.QWidget(self.layoutWidget)
+        self.canvas_layout = QtWidgets.QVBoxLayout(self.canvas_widget)
+        self.canvas_layout.addWidget(self.canvas)
+
+        # 将canvas的QWidget容器加入到水平布局
+        self.horizontalLayout.addWidget(self.canvas_widget)
+        #self.horizontalLayout.addLayout(self.canvas)
+
+        # 输出区域
         self.textBrowser = QtWidgets.QTextBrowser(self.layoutWidget)
         font.setPointSize(10)
         self.textBrowser.setFont(font)
