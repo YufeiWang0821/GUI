@@ -141,8 +141,6 @@ class Draw(QWidget):
         self.recgonize_button.clicked.connect(self.recognize)
         self.clear_button.clicked.connect(self.drawing_area.clear)
 
-
-
         layout = QVBoxLayout()
         layout.addWidget(self.drawing_area)
         layout.addWidget(self.info_label)
@@ -164,7 +162,7 @@ class Draw(QWidget):
         try:
             result = subprocess.run(['sudo', exe_file, 'true'], capture_output=True, text=True, check=True)
             output = result.stdout  # 获取可执行文件的标准输出
-            self.output_label.setText(f"数字识别为：{output}")
+            self.output_label.setText(f"数字识别为：{output[-1]}")
         except subprocess.CalledProcessError as e:
             self.output_label.setText(f"执行错误：{e}")
 

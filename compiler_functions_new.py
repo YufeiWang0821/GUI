@@ -23,7 +23,6 @@ class Ui_Compiler(object):
 
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(1000)  # 每秒刷新一次
-        self.predictions = {}
 
         self.layoutWidget = QtWidgets.QWidget(Form)
         self.layoutWidget.setGeometry(QtCore.QRect(50, 20, a_width, a_height))
@@ -169,14 +168,20 @@ class Ui_Compiler(object):
             self.executable = "../build/bin/lenet5-quan-run"  # Executable for Cifar-10
             self.hmsize = 10
             self.run_executable(self.executable)
+            self.timer.stop()  # 停止定时器
+            self.timer_started = False
         elif self.radioButton_2.isChecked():
             self.executable = "../build/bin/fc3-quan-run"  # Executable for MNIST
             self.hmsize = 10
             self.run_executable(self.executable)
+            self.timer.stop()  # 停止定时器
+            self.timer_started = False
         elif self.radioButton_3.isChecked():
             self.executable = "../build/bin/snn-quan-run"
             self.hmsize = 11
             self.run_executable(self.executable)
+            self.timer.stop()  # 停止定时器
+            self.timer_started = False
         elif self.radioButton_4.isChecked():
             self.subWindow = Draw()  # 创建子界面实例
             self.subWindow.show()  # 显示子界面
@@ -185,32 +190,29 @@ class Ui_Compiler(object):
             return
 
     def run_executable(self, executable):
+        self.predictions = {}
         # 创建 QProcess
-        self.timer_started = False
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
-        # command = ['sudo', executable]
         self.process.start("sudo", [executable])
-        # self.process.start(executable)  # 替换为你的可执行文件路径
+        if not self.timer_started:
+            self.timer_started = True
+            self.timer.start()
+            self.timer.timeout.connect(self.update_heatmap)
 
     def on_readyReadStandardOutput(self):
         output = self.process.readAllStandardOutput().data().decode()
         self.textBrowser.append(output)  # 实时更新textBrowser
          # 使用正则表达式解析每行输出
         lines = output.splitlines()
-        self.predictions = {}
         for line in lines:
             match = re.match(r"Image name: (\S+)\s+Label: (\d+)\s+Predicted: (\d+)", line)
             if match:
                 image_name, label, predicted = match.groups()
                 self.predictions[image_name] = {"label": int(label), "predicted": int(predicted)}
-                if not self.timer_started:
-                    self.timer_started = True
-                    self.timer.start()
-                    self.timer.timeout.connect(self.update_heatmap)
 
     def update_heatmap(self):
-        print("update_heatmap")
+        print(f"update_heatmap & size of predictions now {len(self.predictions)}")
         # 假设 self.predictions 字典存储了每张图片的预测情况
         # 每项存储结构 {'label': true_label, 'predicted': predicted_label}
         
