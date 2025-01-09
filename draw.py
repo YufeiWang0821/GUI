@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLa
 from datetime import datetime
 import torch
 import subprocess
+from PIL import Image
 
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
@@ -44,35 +45,56 @@ class DrawingArea(QWidget):
         self.image.fill(Qt.black)
         self.update()
 
-    def gamma_correction(image, gamma=1.2):
-        lut = np.array([((i/225.0)** gamma)*255 for i in range(256)], dtype=np.unit8)
-        return image.point(lut)
+    # def gamma_correction(image, gamma=1.2):
+    #     lut = np.array([((i/225.0)** gamma)*255 for i in range(256)], dtype=np.unit8)
+    #     return image.point(lut)
 
+    # def process_and_save(self):
+    #     self.image.save("output_image.png")
+        
+
+    #     # 将绘制区域缩放至28x28
+    #     scaled_image = self.image.scaled(28, 28, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+    #     scaled_image = self.gamma_correction(scaled_image)
+    #     scaled_image.save("scaled_image.png")
+    #     # 将图像转换为灰度图像
+    #     gray_image = scaled_image.convertToFormat(QImage.Format_Grayscale8)
+    #     gray_image.save("gray_image.png")
+    #     width = gray_image.width()
+    #     height = gray_image.height()
+        
+    #     # 从QImage获取像素数据
+    #     pixels = np.array([gray_image.pixel(x, y) & 0xFF for y in range(height) for x in range(width)])
+    #     pixels = pixels.reshape((height, width))
+        
+    #     # 将像素值归一化到[-1, 1]范围，黑色是-1，白色是1
+    #     pixels = (pixels / 127.5) - 1.0  # 将像素值从[0, 255]转换到[-1, 1]
+        
+    #     # 将数据保存为MNIST格式，可以使用torch保存为Tensor
+    #     mnist_tensor = torch.tensor(pixels, dtype=torch.float32).unsqueeze(0).unsqueeze(0)  # 添加batch和channel维度
+    #     print(mnist_tensor.shape)
+    #     np.savetxt("image_matrix.txt", mnist_tensor.squeeze().numpy(), fmt="%.4f", delimiter=" ")
+        
+    
     def process_and_save(self):
+        # 保存QImage图像
         self.image.save("output_image.png")
-        
-
-        # 将绘制区域缩放至28x28
-        scaled_image = self.image.scaled(28, 28, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-        scaled_image = self.gamma_correction(scaled_image)
-        scaled_image.save("scaled_image.png")
-        # 将图像转换为灰度图像
-        gray_image = scaled_image.convertToFormat(QImage.Format_Grayscale8)
-        gray_image.save("gray_image.png")
-        width = gray_image.width()
-        height = gray_image.height()
-        
-        # 从QImage获取像素数据
-        pixels = np.array([gray_image.pixel(x, y) & 0xFF for y in range(height) for x in range(width)])
-        pixels = pixels.reshape((height, width))
-        
+        # 读取保存的PNG文件，转换为PIL图像
+        pil_image = Image.open("output_image.png")
+        # 将图像缩放至28x28
+        scaled_image = pil_image.resize((28, 28), Image.ANTIALIAS)
+        # 转换为灰度图像
+        gray_image = scaled_image.convert("L")
+        # 转换为NumPy数组
+        pixels = np.array(gray_image)
         # 将像素值归一化到[-1, 1]范围，黑色是-1，白色是1
         pixels = (pixels / 127.5) - 1.0  # 将像素值从[0, 255]转换到[-1, 1]
-        
         # 将数据保存为MNIST格式，可以使用torch保存为Tensor
         mnist_tensor = torch.tensor(pixels, dtype=torch.float32).unsqueeze(0).unsqueeze(0)  # 添加batch和channel维度
         print(mnist_tensor.shape)
+        # 保存数据到文本文件
         np.savetxt("image_matrix.txt", mnist_tensor.squeeze().numpy(), fmt="%.4f", delimiter=" ")
+
         mnist_tensor = (mnist_tensor / 0.0311).round().to(torch.int8)
         print(mnist_tensor.shape)
         np.savetxt("output_matrix.txt", mnist_tensor.squeeze().numpy(), fmt="%d", delimiter=" ")
