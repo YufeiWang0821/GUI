@@ -13,7 +13,7 @@ class Ui_Compiler(object):
         ui_height = 1200
         a_width = 800
         a_height = 900
-        leftlayout_width = 350
+        leftlayout_width = 355
         Form.setObjectName("Form")
         Form.resize(ui_width, ui_height)
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
