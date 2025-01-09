@@ -18,10 +18,14 @@ from complier_MainRun import compiler_MainRun
 
 class Ui_base(object):
     def setupUi(self, Form):
+        ui_width = 800
+        ui_height = 1200
+        a_width = 400
+        a_height = 800
         Form.setObjectName("Form")
-        Form.resize(700, 900)
-        Form.setMinimumSize(QtCore.QSize(700, 900))
-        Form.setMaximumSize(QtCore.QSize(700, 900))
+        Form.resize(ui_width, ui_height)
+        Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
+        Form.setMaximumSize(QtCore.QSize(ui_width, ui_height))
 
 
         font = QtGui.QFont()
@@ -33,7 +37,7 @@ class Ui_base(object):
         Form.setStyleSheet("background-color: #f5f5f5;")
 
         self.layoutWidget = QtWidgets.QWidget(Form)
-        self.layoutWidget.setGeometry(QtCore.QRect(150, 50, 400, 800))
+        self.layoutWidget.setGeometry(QtCore.QRect(150, 50, a_width, a_height))
         self.layoutWidget.setObjectName("layoutWidget")
 
         # 总的layout

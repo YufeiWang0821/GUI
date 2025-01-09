@@ -9,11 +9,13 @@ import re
 
 class Ui_Compiler(object):
     def setupUi(self, Form):
+        ui_width = 700
+        ui_height = 900
         Form.setObjectName("Form")
-        Form.resize(700, 800)
+        Form.resize(ui_width, ui_height)
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
-        Form.setMinimumSize(QtCore.QSize(700, 800))
-        Form.setMaximumSize(QtCore.QSize(700, 800))
+        Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
+        Form.setMaximumSize(QtCore.QSize(ui_width, ui_height))
 
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(1000)  # 每秒刷新一次

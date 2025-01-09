@@ -8,10 +8,12 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 class Ui_Compiler(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(700, 800)
+        ui_width = 700
+        ui_height = 900
+        Form.resize(ui_width, ui_height)
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
-        Form.setMinimumSize(QtCore.QSize(700, 800))
-        Form.setMaximumSize(QtCore.QSize(700, 800))
+        Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
+        Form.setMaximumSize(QtCore.QSize(ui_width, ui_height))
 
         self.layoutWidget = QtWidgets.QWidget(Form)
         self.layoutWidget.setGeometry(QtCore.QRect(50, 20, 600, 700))

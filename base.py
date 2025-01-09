@@ -13,10 +13,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_base(object):
     def setupUi(self, Form):
+        ui_width = 700
+        ui_height = 900
         Form.setObjectName("Form")
-        Form.resize(700, 900)
-        Form.setMinimumSize(QtCore.QSize(700, 900))
-        Form.setMaximumSize(QtCore.QSize(700, 900))
+        Form.resize(ui_width, ui_height)
+        Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
+        Form.setMaximumSize(QtCore.QSize(ui_width, ui_height))
 
 
         font = QtGui.QFont()
