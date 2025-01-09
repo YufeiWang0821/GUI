@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from sh_MainRun import sh_MainRun
 from complier_MainRun import compiler_MainRun
 #from WearLevelingUI.main import myWin
-
+from wear_leveling_MainRun import wear_leveling_MainRun
 
 class Ui_base(object):
     def setupUi(self, Form):
@@ -291,7 +291,7 @@ class Ui_base(object):
         if self.chosen_Ui == 0:# 调用脚本窗口
             window_class = sh_MainRun(parameter=self.shpara)
         elif self.chosen_Ui == 1:# 调用磨损均衡窗口
-            window_class = compiler_MainRun()
+            window_class = wear_leveling_MainRun()
         elif self.chosen_Ui == 2:# 调用编译器窗口
             window_class = compiler_MainRun()
         # else:
