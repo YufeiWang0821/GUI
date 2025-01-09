@@ -99,51 +99,152 @@ class connect_ssh:
         self.sftp.close()
         print("Closed!")
 
-class Ui_Form(object):
+class Ui_WearLeveling(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1341, 901)
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(210, 50, 75, 23))
-        self.pushButton.setObjectName("pushButton")
+        Form.resize(1320, 1200)
+        Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
+        Form.setMinimumSize(QtCore.QSize(1000, 800))
+        Form.setMaximumSize(QtCore.QSize(1500, 1500))
+
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(14)  # 增加标题字体大小
+        font.setBold(True)
+
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(270, 30, 96, 12))
+        self.label.setGeometry(QtCore.QRect(500, 20, 300, 30))
         self.label.setTextFormat(QtCore.Qt.AutoText)
         self.label.setScaledContents(False)
         self.label.setObjectName("label")
+        self.label.setFont(font)
+        self.label.setStyleSheet("color: #333333;")  # 标题颜色为深灰色
+
+
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setFont(font)
+        self.pushButton.setGeometry(QtCore.QRect(150, 90, 300, 50))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                padding: 10px 20px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+            """
+        )
+
         self.pushButton_2 = QtWidgets.QPushButton(Form)
-        self.pushButton_2.setGeometry(QtCore.QRect(150, 80, 211, 23))
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setGeometry(QtCore.QRect(10, 150, 600, 50))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                padding: 10px 20px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+            """
+        )
+
         self.pushButton_3 = QtWidgets.QPushButton(Form)
-        self.pushButton_3.setGeometry(QtCore.QRect(150, 110, 211, 23))
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setGeometry(QtCore.QRect(10, 210, 600, 50))
         self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                padding: 10px 20px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+            """
+        )
+
+        self.pushButton_5 = QtWidgets.QPushButton(Form)
+        self.pushButton_5.setFont(font)
+        self.pushButton_5.setGeometry(QtCore.QRect(10, 270, 600, 50))
+        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_5.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                padding: 10px 20px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+            """
+        )       
+
         self.pushButton_4 = QtWidgets.QPushButton(Form)
-        self.pushButton_4.setGeometry(QtCore.QRect(120, 170, 271, 23))
+        self.pushButton_4.setFont(font)
+        self.pushButton_4.setGeometry(QtCore.QRect(10, 330, 600, 50))
         self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_4.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                padding: 10px 20px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+            """
+        )
+
         self.textEdit = QtWidgets.QTextEdit(Form)
-        self.textEdit.setGeometry(QtCore.QRect(500, 70, 531, 111))
+        self.textEdit.setGeometry(QtCore.QRect(700, 90, 600, 300))
         self.textEdit.setObjectName("textEdit")
+
         self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(190, 210, 141, 20))
+        self.label_2.setGeometry(QtCore.QRect(150, 400, 300, 50))
         self.label_2.setObjectName("label_2")
+        self.label_2.setTextFormat(QtCore.Qt.AutoText)
+        self.label_2.setScaledContents(False)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("color: #333333;")  # 标题颜色为深灰色
+
         self.label_3 = QtWidgets.QLabel(Form)
-        self.label_3.setGeometry(QtCore.QRect(950, 210, 131, 16))
+        self.label_3.setGeometry(QtCore.QRect(850, 400, 300, 50))
         self.label_3.setObjectName("label_3")
+        self.label_3.setTextFormat(QtCore.Qt.AutoText)
+        self.label_3.setScaledContents(False)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("color: #333333;")  # 标题颜色为深灰色
+
+
         self.label_4 = QtWidgets.QLabel(Form)
-        self.label_4.setGeometry(QtCore.QRect(110, 250, 300, 300))
+        self.label_4.setGeometry(QtCore.QRect(110, 500, 300, 300))
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(Form)
-        self.label_5.setGeometry(QtCore.QRect(870, 250, 300, 300))
+        self.label_5.setGeometry(QtCore.QRect(870, 500, 300, 300))
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(Form)
-        self.label_6.setGeometry(QtCore.QRect(30, 600, 500, 200))
+        self.label_6.setGeometry(QtCore.QRect(30, 850, 500, 200))
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(Form)
-        self.label_7.setGeometry(QtCore.QRect(750, 600, 500, 200))
+        self.label_7.setGeometry(QtCore.QRect(750, 850, 500, 200))
         self.label_7.setObjectName("label_7")
-        self.pushButton_5 = QtWidgets.QPushButton(Form)
-        self.pushButton_5.setGeometry(QtCore.QRect(170, 140, 181, 23))
-        self.pushButton_5.setObjectName("pushButton_5")
+
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -180,8 +281,8 @@ class Ui_Form(object):
         self.pushButton_4.setText(_translate("Form", "未使用磨损均衡与使用磨损均衡的情况对比"))
         self.label_2.setText(_translate("Form", "未使用磨损均衡结果图"))
         self.label_3.setText(_translate("Form", "使用了磨损均衡结果图"))
-        self.label_4.setText(_translate("Form", "展示区域"))
-        self.label_5.setText(_translate("Form", "展示区域"))
+        # self.label_4.setText(_translate("Form", "展示区域"))
+        # self.label_5.setText(_translate("Form", "展示区域"))
         self.pushButton_5.setText(_translate("Form", "从服务器获取分析结果图"))
 
     def connect(self):
@@ -190,10 +291,10 @@ class Ui_Form(object):
         # sever.close()
     def run_generate_heatmap(self):
         self.sever.execute('python /home/wangyufei/wear_leveling_visualization/wL_UI/heatmap.py')
+        self.sever.execute('python /home/wangyufei/wear_leveling_visualization/wL_UI/heatmap_gif.py')
     def run_generate_violin(self):
         self.sever.execute('python /home/wangyufei/wear_leveling_visualization/wL_UI/violin_plot_250.py')
-        # self.sever.execute('python /home/wangyufei/wear_leveling_visualization/wL_UI/heatmap_gif.py')
-        # self.sever.execute('python /home/wangyufei/wear_leveling_visualization/wL_UI/violin_gif.py')
+        self.sever.execute('python /home/wangyufei/wear_leveling_visualization/wL_UI/violin_gif.py')
         # self.text_edit.append('动图绘制完成')
       
     def show_gif(self):
