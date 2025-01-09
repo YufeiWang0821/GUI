@@ -231,10 +231,10 @@ class Ui_base(object):
         self.radioButton_8.setText(_translate("Form", "全芯片处理能效"))
         self.radioButton_9.setText(_translate("Form", "与GPU的能效对比"))
         self.label_2.setText(_translate("Form", "RRAM芯片"))
-        self.radioButton_12.setText(_translate("Form", "容量"))
-        self.radioButton_11.setText(_translate("Form", "1、8、16bit位宽乘加计算"))
-        self.radioButton_10.setText(_translate("Form", "算力"))
-        self.radioButton_3.setText(_translate("Form", "能效"))
+        self.radioButton_12.setText(_translate("Form", "容量"))# allRRAMTest zero one random
+        self.radioButton_11.setText(_translate("Form", "1、8、16bit位宽乘加计算"))# computeCorrectnessTest
+        self.radioButton_10.setText(_translate("Form", "算力"))# TOPSTest
+        # self.radioButton_3.setText(_translate("Form", "能效"))
         self.label_3.setText(_translate("Form", "IR-Drop"))
         self.radioButton_2.setText(_translate("Form", "Binary FC-3算法识别准确率"))
         self.radioButton_13.setText(_translate("Form", "Binary LeNet-5算法识别准确率"))
