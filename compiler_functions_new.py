@@ -160,15 +160,15 @@ class Ui_Compiler(object):
     def run_selected_dataset(self):
         # Determine which dataset is selected
         if self.radioButton.isChecked():
-            self.executable = "../build/bin/lenet5-run"  # Executable for Cifar-10
+            self.executable = "../build/bin/lenet5-quan-run"  # Executable for Cifar-10
             self.hmsize = 10
             self.run_executable(self.executable)
         elif self.radioButton_2.isChecked():
-            self.executable = "../build/bin/fc3-run"  # Executable for MNIST
+            self.executable = "../build/bin/fc3-quan-run"  # Executable for MNIST
             self.hmsize = 10
             self.run_executable(self.executable)
         elif self.radioButton_3.isChecked():
-            self.executable = "../build/bin/snn-run"
+            self.executable = "../build/bin/snn-quan-run"
             self.hmsize = 11
             self.run_executable(self.executable)
         elif self.radioButton_4.isChecked():
@@ -183,7 +183,9 @@ class Ui_Compiler(object):
         self.timer_started = False
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
-        self.process.start(executable)  # 替换为你的可执行文件路径
+        # command = ['sudo', executable]
+        self.process.start("sudo", [executable])
+        # self.process.start(executable)  # 替换为你的可执行文件路径
 
     def on_readyReadStandardOutput(self):
         output = self.process.readAllStandardOutput().data().decode()
