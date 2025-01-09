@@ -12,8 +12,8 @@ class Ui_Compiler(object):
         ui_width = 900
         ui_height = 1200
         a_width = 800
-        a_height = 900
-        leftlayout_width = 355
+        a_height = 1100
+        leftlayout_width = 350
         Form.setObjectName("Form")
         Form.resize(ui_width, ui_height)
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
@@ -108,6 +108,7 @@ class Ui_Compiler(object):
         # 图片显示框
         self.image_label = QtWidgets.QLabel(self.layoutWidget)
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.image_label.setMinimumHeight(100)
         self.left_layout.addWidget(self.image_label)
         # 信息框
         self.info_label = QtWidgets.QLabel(self.layoutWidget)
@@ -131,6 +132,7 @@ class Ui_Compiler(object):
         self.canvas = FigureCanvas(self.figure)
         # 将热力图组件放入一个QWidget容器中
         self.canvas_widget = QtWidgets.QWidget(self.layoutWidget)
+        self.canvas_widget.setMinimumHeight(400)
         self.canvas_layout = QtWidgets.QVBoxLayout(self.canvas_widget)
         self.canvas_layout.addWidget(self.canvas)
         # 将canvas的QWidget容器加入到水平布局
@@ -142,7 +144,7 @@ class Ui_Compiler(object):
         self.textBrowser.setFont(font)
         self.textBrowser.setStyleSheet("background-color: #ffffff; border: 1px solid #cccccc; padding: 10px;")
         self.textBrowser.setObjectName("textBrowser")
-        self.textBrowser.setMinimumHeight(200)
+        self.textBrowser.setMaximumHeight(300)
         self.verticalLayout_2.addWidget(self.textBrowser)
 
         # 设置文本内容和按钮事件
@@ -248,7 +250,7 @@ class Ui_Compiler(object):
         # 设置刻度
         ax.set_xticks(np.arange(self.hmsize))
         ax.set_yticks(np.arange(self.hmsize))
-        ax.set_title("热力图")
+        ax.set_title("Heatmap")
         for (i, j), value in np.ndenumerate(heatmap):
             ax.text(j, i, f'{value}', ha='center', va='center', color='black', fontsize=7)
         # 设置边距以使图形水平居中
