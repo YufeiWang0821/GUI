@@ -196,10 +196,11 @@ class Ui_Compiler(object):
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
         self.process.start("sudo", [executable])
-        if not self.timer_started:
-            self.timer_started = True
-            self.timer.start()
-            self.timer.timeout.connect(self.update_heatmap)
+        # if not self.timer_started:
+        #     print("timer started")
+        #     self.timer_started = True
+        #     self.timer.start(1000)
+        #     self.timer.timeout.connect(self.update_heatmap)
 
     def on_readyReadStandardOutput(self):
         output = self.process.readAllStandardOutput().data().decode()
@@ -211,6 +212,11 @@ class Ui_Compiler(object):
             if match:
                 image_name, label, predicted = match.groups()
                 self.predictions[image_name] = {"label": int(label), "predicted": int(predicted)}
+                if not self.timer_started:
+                    print("timer started")
+                    self.timer_started = True
+                    self.timer.start(1000)
+                    self.timer.timeout.connect(self.update_heatmap)
 
     def update_heatmap(self):
         print(f"update_heatmap & size of predictions now {len(self.predictions)}")
@@ -265,9 +271,6 @@ class Ui_Compiler(object):
             self.info_label.setText("错误：请输入有效的数字序号！")
             return
         # 检查序号是否合法
-        if image_index < 0 or image_index >= len(self.predictions):
-            self.info_label.setText("错误：序号超出范围！")
-            return
         if self.radioButton.isChecked():
             dataset_name = "CIFAR10"
         elif self.radioButton_2.isChecked():
@@ -276,7 +279,7 @@ class Ui_Compiler(object):
             self.info_label.setText("错误：当前选项没有可显示图片！")
 
         # 如果序号合法，显示对应的图片和预测数据
-        image_path = f"data\{dataset_name}\\test_{image_index}.png"
+        image_path = f"data/{dataset_name}/test_{image_index}.png"
         try:
             # 尝试加载图片
             pixmap = QtGui.QPixmap(image_path)
@@ -288,5 +291,9 @@ class Ui_Compiler(object):
             self.info_label.setText(f"错误：加载图片时出现问题 ({str(e)})")
             return
         # 显示对应的预测数据
-        prediction_data = self.predictions[image_index]
-        self.info_label.setText(f"预测数据：{prediction_data}")
+        try:
+            prediction_data = self.predictions[f"test_{image_index}.txt"]
+            self.info_label.setText(f"{prediction_data}")
+        except:
+            self.info_label.setText("Not yet inferred.")
+            return
