@@ -23,6 +23,7 @@ class Ui_Compiler(object):
 
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(1000)  # 每秒刷新一次
+        self.timer_started = False
 
         self.layoutWidget = QtWidgets.QWidget(Form)
         self.layoutWidget.setGeometry(QtCore.QRect(50, 20, a_width, a_height))
