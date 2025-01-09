@@ -19,9 +19,9 @@ from complier_MainRun import compiler_MainRun
 class Ui_base(object):
     def setupUi(self, Form):
         ui_width = 800
-        ui_height = 1200
-        a_width = 400
-        a_height = 800
+        ui_height = 1500
+        a_width = 500
+        a_height = 1200
         Form.setObjectName("Form")
         Form.resize(ui_width, ui_height)
         Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
@@ -286,7 +286,7 @@ class Ui_base(object):
             self.chosen_Ui = -1
         
     def on_push_button_click(self):
-        print(self.chosen_Ui)
+        print(f"Chosen {self.chosen_Ui}")
         # 根据选中的 RadioButton 创建对应的窗口实例
         if self.chosen_Ui == 0:# 调用脚本窗口
             window_class = sh_MainRun(parameter=self.shpara)

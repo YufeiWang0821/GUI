@@ -76,7 +76,7 @@ class Draw(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("手写数字识别")
-        self.setGeometry(100, 100, 400, 400)
+        self.setGeometry(1000, 1000, 500, 500)
 
         font = QtGui.QFont()
         font.setFamily("微软雅黑")

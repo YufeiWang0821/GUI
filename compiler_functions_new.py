@@ -9,20 +9,24 @@ import re
 
 class Ui_Compiler(object):
     def setupUi(self, Form):
-        ui_width = 700
-        ui_height = 900
+        ui_width = 900
+        ui_height = 1200
+        a_width = 800
+        a_height = 900
+        leftlayout_width = 350
         Form.setObjectName("Form")
         Form.resize(ui_width, ui_height)
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
         Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
         Form.setMaximumSize(QtCore.QSize(ui_width, ui_height))
+        self.setGeometry(500, 500, a_width, a_height)
 
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(1000)  # 每秒刷新一次
         self.predictions = {}
 
         self.layoutWidget = QtWidgets.QWidget(Form)
-        self.layoutWidget.setGeometry(QtCore.QRect(50, 20, 600, 700))
+        self.layoutWidget.setGeometry(QtCore.QRect(50, 20, a_width, a_height))
         self.layoutWidget.setObjectName("layoutWidget")
 
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget)
@@ -117,9 +121,9 @@ class Ui_Compiler(object):
         self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
         self.left_layout.addWidget(self.input_line)
         #左侧组件设置
-        self.image_label.setFixedWidth(250)
-        self.info_label.setFixedWidth(250)
-        self.input_line.setFixedWidth(250)
+        self.image_label.setFixedWidth(leftlayout_width)
+        self.info_label.setFixedWidth(leftlayout_width)
+        self.input_line.setFixedWidth(leftlayout_width)
         self.horizontalLayout.addLayout(self.left_layout)
 
         # 热力图组件
