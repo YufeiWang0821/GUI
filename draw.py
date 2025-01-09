@@ -44,15 +44,21 @@ class DrawingArea(QWidget):
         self.image.fill(Qt.black)
         self.update()
 
+    def gamma_correction(image, gamma=1.2):
+        lut = np.array([((i/225.0)** gamma)*255 for i in range(256)], dtype=np.unit8)
+        return image.point(lut)
+
     def process_and_save(self):
         self.image.save("output_image.png")
+        
 
         # 将绘制区域缩放至28x28
         scaled_image = self.image.scaled(28, 28, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-
+        scaled_image = self.gamma_correction(scaled_image)
+        scaled_image.save("scaled_image.png")
         # 将图像转换为灰度图像
         gray_image = scaled_image.convertToFormat(QImage.Format_Grayscale8)
-        
+        gray_image.save("gray_image.png")
         width = gray_image.width()
         height = gray_image.height()
         
@@ -70,6 +76,8 @@ class DrawingArea(QWidget):
         mnist_tensor = (mnist_tensor / 0.0311).round().to(torch.int8)
         print(mnist_tensor.shape)
         np.savetxt("output_matrix.txt", mnist_tensor.squeeze().numpy(), fmt="%d", delimiter=" ")
+
+
 
 
 class Draw(QWidget):
