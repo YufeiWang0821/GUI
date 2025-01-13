@@ -33,7 +33,7 @@ class connect_ssh:
 
         jumpbox_host_ip = "222.20.98.67"  # 跳板机
         ssh_user = "wangyufei"
-        ssh_key_filename = 'C:/Users/JJ/.ssh/id_rsa'
+        ssh_key_filename = 'id_rsa'
         target_host_ip = '192.168.33.2'  # 目的服务器
         #print(ssh_key_filename)
 
@@ -141,7 +141,7 @@ class Ui_WearLeveling(object):
 
         self.pushButton_2 = QtWidgets.QPushButton(Form)
         self.pushButton_2.setFont(font)
-        self.pushButton_2.setGeometry(QtCore.QRect(10, 150, 600, 50))
+        self.pushButton_2.setGeometry(QtCore.QRect(10, 1060, 600, 50))
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_2.setStyleSheet(
             """
@@ -159,7 +159,7 @@ class Ui_WearLeveling(object):
 
         self.pushButton_3 = QtWidgets.QPushButton(Form)
         self.pushButton_3.setFont(font)
-        self.pushButton_3.setGeometry(QtCore.QRect(10, 210, 600, 50))
+        self.pushButton_3.setGeometry(QtCore.QRect(10, 1120, 600, 50))
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_3.setStyleSheet(
             """
@@ -177,7 +177,7 @@ class Ui_WearLeveling(object):
 
         self.pushButton_5 = QtWidgets.QPushButton(Form)
         self.pushButton_5.setFont(font)
-        self.pushButton_5.setGeometry(QtCore.QRect(10, 270, 600, 50))
+        self.pushButton_5.setGeometry(QtCore.QRect(10, 150, 600, 50))
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_5.setStyleSheet(
             """
@@ -195,7 +195,7 @@ class Ui_WearLeveling(object):
 
         self.pushButton_4 = QtWidgets.QPushButton(Form)
         self.pushButton_4.setFont(font)
-        self.pushButton_4.setGeometry(QtCore.QRect(10, 330, 600, 50))
+        self.pushButton_4.setGeometry(QtCore.QRect(10, 210, 600, 50))
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_4.setStyleSheet(
             """
@@ -324,22 +324,55 @@ class Ui_WearLeveling(object):
         movie3.start()
         movie4.start()
     
-    def download_folder(self):
-        # 定义SCP命令，使用 -r 递归下载整个文件夹
-        scp_command = [
-            "scp",
-            "-r",  # 递归下载
-            "wangyufei@GPU01:/home/wangyufei/wear_leveling_visualization/wL_UI/gifs/",  # 远程文件夹路径
-            "./"  # 将文件下载到当前目录
-        ]
+    # def download_folder(self):
+    #     # 定义SCP命令，使用 -r 递归下载整个文件夹
+    #     scp_command = [
+    #         "scp",
+    #         "-r",  # 递归下载
+    #         "wangyufei@GPU01:/home/wangyufei/wear_leveling_visualization/wL_UI/gifs/",  # 远程文件夹路径
+    #         "./"  # 将文件下载到当前目录
+    #     ]
 
-        # 执行命令
+    #     # 执行命令
+    #     try:
+    #         result = subprocess.run(scp_command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    #         self.textEdit.append("文件夹传输成功。")
+    #         #self.textEdit.append("标准输出: " + result.stdout)
+    #     except subprocess.CalledProcessError as e:
+    #         self.textEdit.append("SCP 文件夹传输出错：")
+    #         self.textEdit.append("标准错误: " + e.stderr)
+
+    def download_folder(self):
+        # 定义远程文件夹路径和本地目标文件夹路径
+        remote_folder_path = "/home/wangyufei/wear_leveling_visualization/wL_UI/gifs/"
+        local_folder_path = "./gifs/"
+
+        # 确保本地文件夹存在，如果不存在则创建
+        if not os.path.exists(local_folder_path):
+            os.makedirs(local_folder_path)
+
+        # 使用已连接的 SSH 客户端打开 SFTP 通道
+        sftp = self.sever.sftp
+
         try:
-            result = subprocess.run(scp_command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            self.textEdit.append("文件夹传输成功。")
-            #self.textEdit.append("标准输出: " + result.stdout)
-        except subprocess.CalledProcessError as e:
-            self.textEdit.append("SCP 文件夹传输出错：")
-            self.textEdit.append("标准错误: " + e.stderr)
+            # 获取远程文件夹内的文件列表
+            remote_files = sftp.listdir(remote_folder_path)
+
+            # 遍历文件列表，下载每个文件
+            for filename in remote_files:
+                remote_file_path = os.path.join(remote_folder_path, filename)
+                local_file_path = os.path.join(local_folder_path, filename)
+
+                # 下载文件
+                sftp.get(remote_file_path, local_file_path)
+                #self.textEdit.append(f"下载文件 {filename} 成功")
+            self.textEdit.append(f"获取成功")
+
+        except Exception as e:
+            self.textEdit.append(f"文件传输失败: {str(e)}")
+
+        finally:
+            # 关闭 SFTP 客户端
+            sftp.close()
 
 
