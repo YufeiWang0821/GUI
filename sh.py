@@ -26,27 +26,34 @@ class Ui_Sh(object):
         self.label.setText(_translate("Form", "当前正在运行"))
 
     def run_script(self, parameter):
-        # 根据传入的参数执行不同的脚本并显示结果
-        self.execute_script_based_on_param(parameter)
+        # 启动一个新线程来执行脚本
+        self.thread = ScriptExecutionThread(parameter, self.textBrowser)
+        self.thread.start()
 
-    def execute_script_based_on_param(self, parameter):
+class ScriptExecutionThread(QtCore.QThread):
+    def __init__(self, parameter, textBrowser):
+        super().__init__()
+        self.parameter = parameter
+        self.textBrowser = textBrowser
+
+    def run(self):
         # 创建 SSH 连接类并连接
         self.ssh_connection = connect_ssh(self.textBrowser)  # 传递 textBrowser
         print('连接成功')
 
-        if parameter == 2:  # Binary FC-3算法识别准确率
+        if self.parameter == 2:  # Binary FC-3算法识别准确率
             self.ssh_connection.execute('cd /home/wangyufei/ProgramTest/FADESim_project_test/ir_drop/pimfixedpoint/')
             # 确保cd命令正确执行，并打印当前工作目录
             cd_cmd = 'cd /home/wangyufei/ProgramTest/FADESim_project_test/ir_drop/pimfixedpoint/ && ./ui_fc3.sh'
             self.ssh_connection.execute_real_time(cd_cmd)
 
-        elif parameter == 13:  # Binary LeNet-5算法识别准确率
+        elif self.parameter == 13:  # Binary LeNet-5算法识别准确率
             self.ssh_connection.execute('cd /home/wangyufei/ProgramTest/FADESim_project_test/ir_drop/pimfixedpoint/')
             # 确保cd命令正确执行，并打印当前工作目录
             cd_cmd = 'cd /home/wangyufei/ProgramTest/FADESim_project_test/ir_drop/pimfixedpoint/ && ./ui_lenet5.sh'
             self.ssh_connection.execute_real_time(cd_cmd)
 
-        elif parameter == 14:  # Naive Bayes算法识别准确率
+        elif self.parameter == 14:  # Naive Bayes算法识别准确率
             self.ssh_connection.execute('cd /home/wangyufei/ProgramTest/FADESim_project_test/ir_drop/pimfixedpoint/')
             # 确保cd命令正确执行，并打印当前工作目录
             cd_cmd = 'cd /home/wangyufei/ProgramTest/FADESim_project_test/ir_drop/pimfixedpoint/ && ./ui_nb.sh'
@@ -60,7 +67,7 @@ class connect_ssh:
     def __init__(self, textBrowser):
         jumpbox_host_ip = "222.20.98.67"  # 跳板机
         ssh_user = "wangyufei"
-        ssh_key_filename = 'C:/Users/JJ/.ssh/id_rsa'
+        ssh_key_filename = 'id_rsa'
         target_host_ip = '192.168.33.2'  # 目的服务器
 
         # 创建一个实例化
