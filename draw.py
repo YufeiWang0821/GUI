@@ -52,6 +52,7 @@ class DrawingArea(QWidget):
         self.image.save("output_image.png")
         # 读取保存的PNG文件，转换为PIL图像
         pil_image = Image.open("output_image.png")
+        print(pil_image)
         transform = transforms.Compose([
             transforms.Grayscale(num_output_channels=1),
             transforms.Resize((28,28)),
@@ -61,7 +62,9 @@ class DrawingArea(QWidget):
         np.savetxt("image_matrix.txt", transformed_image.squeeze().numpy(), fmt="%.4f", delimiter=" ")
         scale_tensor = torch.tensor([0.0311])
         transformed_image = transformed_image.unsqueeze(0)
-        mnist_tensor = (transformed_image.unsqueeze(0) / scale_tensor).round().to(torch.int8)
+        mnist_tensor = ((transformed_image.unsqueeze(0) / scale_tensor)*8-32).round()
+        mnist_tensor[mnist_tensor>32] = 32
+        mnist_tensor =  mnist_tensor.to(torch.int8)
         np.savetxt("output_matrix.txt", mnist_tensor.squeeze().squeeze().numpy(), fmt="%d", delimiter=" ")
 
 
