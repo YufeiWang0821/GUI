@@ -6,6 +6,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from draw import Draw
 import re
+import os
 
 class Ui_Compiler(object):
     def setupUi(self, Form):
@@ -170,7 +171,7 @@ class Ui_Compiler(object):
         # check if subprocess exists
         if self.process:
             if self.process.state() == QtCore.QProcess.Running:
-                self.process.kill
+                self.kill_process()
 
         event.accept()
 
@@ -205,7 +206,7 @@ class Ui_Compiler(object):
         # check if subprocess exists
         if self.process:
             if self.process.state() == QtCore.QProcess.Running:
-                self.process.kill
+                self.kill_process()
 
         self.predictions = {}
         # 创建 QProcess
@@ -219,6 +220,8 @@ class Ui_Compiler(object):
         #     self.timer.timeout.connect(self.update_heatmap)
 
     def on_readyReadStandardOutput(self):
+        if self.process == None:
+            return
         output = self.process.readAllStandardOutput().data().decode()
         self.textBrowser.append(output)  # 实时更新textBrowser
          # 使用正则表达式解析每行输出
@@ -314,3 +317,11 @@ class Ui_Compiler(object):
         except:
             self.info_label.setText("Not yet inferred.")
             return
+    
+    def kill_process(self):
+        if self.process:
+            pid = self.process.processId()
+            print(f"Now killing the subprocess {pid} of compiler window")
+            if pid:
+                os.system(f"sudo kill -9 {pid}")
+            self.process = None

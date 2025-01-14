@@ -102,14 +102,16 @@ class connect_ssh:
 class Ui_WearLeveling(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1500, 1200)
+        ui_width = 1450
+        ui_height = 1250
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
-        Form.setMinimumSize(QtCore.QSize(1000, 800))
-        Form.setMaximumSize(QtCore.QSize(1500, 1500))
+        Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
+        Form.setMaximumSize(QtCore.QSize(ui_width, ui_height))
+        self.setGeometry(500, 500, ui_width, ui_height)
 
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
-        font.setPointSize(14)  # 增加标题字体大小
+        font.setPointSize(12)  # 增加标题字体大小
         font.setBold(True)
 
         self.label = QtWidgets.QLabel(Form)
