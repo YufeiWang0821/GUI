@@ -12,6 +12,9 @@ class Ui_Sh(object):
         self.textBrowser = QtWidgets.QTextBrowser(Form)
         self.textBrowser.setGeometry(QtCore.QRect(30, 60, 411, 371))
         self.textBrowser.setObjectName("textBrowser")
+        
+        self.testname = ""
+        
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -23,12 +26,48 @@ class Ui_Sh(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "脚本运行窗口"))
-        self.label.setText(_translate("Form", "当前正在运行"))
+        self.label.setText(_translate("Form", f"当前正在运行{self.testname}"))
 
     def run_script(self, parameter):
-        # 启动一个新线程来执行脚本
-        self.thread = ScriptExecutionThread(parameter, self.textBrowser)
-        self.thread.start()
+        if parameter in [2, 13, 14]:
+            # 启动一个新线程来执行脚本
+            self.thread = ScriptExecutionThread(parameter, self.textBrowser)
+            self.thread.start()
+        elif parameter in [3, 10, 11, 12]:
+            self.run_executable(parameter)
+
+    def run_executable(self, parameter):
+        if self.process:
+            if self.process.state() == QtCore.QProcess.Running:
+                self.kill_process()
+
+        if parameter == 3:
+            self.executable = ""# 能效
+        elif parameter == 10:
+            self.executable = ""# 算力
+        elif parameter == 11:
+            self.executable = ""# 乘加计算
+        elif parameter == 12:
+            self.executable = ""# 容量
+        else:
+            return
+        
+        self.process = QtCore.QProcess(self)
+        self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
+        self.process.start( [self.executable])
+
+    def on_readyReadStandardOutput(self):
+        if self.process == None:
+            return
+        output = self.process.readAllStandardOutput().data().decode()
+        self.textBrowser.append(output)  # 实时更新textBrowser
+
+    def closeEvent(self, event):
+        # check if subprocess exists
+        if self.process:
+            if self.process.state() == QtCore.QProcess.Running:
+                self.process.kill()
+        event.accept()
 
 class ScriptExecutionThread(QtCore.QThread):
     def __init__(self, parameter, textBrowser):
