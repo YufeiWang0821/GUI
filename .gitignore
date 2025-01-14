@@ -19,3 +19,4 @@ FunctionsTest.py
 *.txt
 .DS_store
 .vscode
+*.gif
