@@ -302,10 +302,15 @@ class Ui_base(object):
             self.show_window(window_class)
 
     def show_window(self, window_class):
+        # check if subwindow exists
+        if hasattr(self,"subWindow") and self.subWindow is not None:
+            self.subWindow.close()
+            self.subWindow = None
         # 创建窗口实例
-        # window = QtWidgets.QDialog()
-        # ui = window_class()  # 创建对应的窗口 UI 实例
-        # ui.setupUi(window)  # 设置窗口的 UI
-        # window.exec_()  # 弹出窗口，阻塞当前窗口，直到关闭
         self.subWindow = window_class
         self.subWindow.show()
+
+    def closeEvent(self, event):
+        if hasattr(self,"subWindow") and self.subWindow is not None:
+            self.subWindow.close()
+        event.accept()

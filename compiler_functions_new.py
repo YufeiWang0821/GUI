@@ -153,6 +153,7 @@ class Ui_Compiler(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
         self.executable = None  # To store the selected executable
+        self.process = QtCore.QProcess(self)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -164,6 +165,14 @@ class Ui_Compiler(object):
         self.radioButton_4.setText(_translate("Form", "FC-3 手写数字识别"))
         self.pushButton.setText(_translate("Form", "运行指定功能"))
         self.label_2.setText(_translate("Form", "运行结果"))
+
+    def closeEvent(self, event):
+        # check if subprocess exists
+        if self.process:
+            if self.process.state() == QtCore.QProcess.Running:
+                self.process.kill
+
+        event.accept()
 
     def run_selected_dataset(self):
         # Determine which dataset is selected
@@ -193,6 +202,11 @@ class Ui_Compiler(object):
             return
 
     def run_executable(self, executable):
+        # check if subprocess exists
+        if self.process:
+            if self.process.state() == QtCore.QProcess.Running:
+                self.process.kill
+
         self.predictions = {}
         # 创建 QProcess
         self.process = QtCore.QProcess(self)
@@ -288,7 +302,8 @@ class Ui_Compiler(object):
             if pixmap.isNull():
                 self.info_label.setText(f"错误：无法加载图片 test_{image_index}.png")
                 return
-            self.image_label.setPixmap(pixmap)
+            scaled_pixmap = pixmap.scaled(self.image_label.size(), QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation)
+            self.image_label.setPixmap(scaled_pixmap)
         except Exception as e:
             self.info_label.setText(f"错误：加载图片时出现问题 ({str(e)})")
             return

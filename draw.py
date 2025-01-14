@@ -35,7 +35,8 @@ class DrawingArea(QWidget):
     def mouseMoveEvent(self, event):
         if event.buttons() & Qt.LeftButton:
             painter = QPainter(self.image)
-            painter.setPen(QPen(Qt.white, 5, Qt.SolidLine))
+            # painter.setPen(QPen(QColor(255,255,255,255), 25, Qt.SolidLine))
+            painter.setPen(QPen(Qt.white, 25, Qt.SolidLine))
             painter.drawLine(self.last_point, event.pos())
             self.last_point = event.pos()
             self.update()
@@ -58,14 +59,18 @@ class DrawingArea(QWidget):
         img_array = img_array/255.0
         img_array = 2*img_array - 1
         img_tensor = torch.tensor(img_array)
-
         np.savetxt("image_matrix.txt", img_tensor.numpy(), fmt="%.4f", delimiter=" ")
 
-        print(f"img_tensor max:{img_tensor.max()}")
         scale_tensor = torch.tensor([0.0311])
         mnist_tensor = ((img_tensor / scale_tensor)).round().to(torch.int8)
-        print(f"mnist_tensor max:{mnist_tensor.max()}")
         np.savetxt("output_matrix.txt", mnist_tensor.numpy(), fmt="%d", delimiter=" ")
+
+        # try to convert mnist_tensor back to png
+        tensor_normalized = (((mnist_tensor+32)/64)*255).clamp(0, 255)
+        array_normalized = tensor_normalized.numpy().astype(np.int8)
+        image_normalized = Image.fromarray(array_normalized, mode='L')
+        image_normalized.save("output_image_28.png")
+
         # print(pil_image)
         # transform = transforms.Compose([
         #     transforms.Grayscale(num_output_channels=1),
