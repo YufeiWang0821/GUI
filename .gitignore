@@ -16,7 +16,8 @@ FunctionsTest.py
 
 *.ui
 *.png
-*.txt
+image_matrix.txt
+output_matrix.txt
 .DS_store
 .vscode
 *.gif
