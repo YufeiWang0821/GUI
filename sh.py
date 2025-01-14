@@ -14,7 +14,7 @@ class Ui_Sh(object):
         self.textBrowser.setObjectName("textBrowser")
         
         self.testname = ""
-        
+
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -35,6 +35,8 @@ class Ui_Sh(object):
             self.thread.start()
         elif parameter in [3, 10, 11, 12]:
             self.run_executable(parameter)
+        else:
+            return
 
     def run_executable(self, parameter):
         if self.process:
