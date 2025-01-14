@@ -19,7 +19,7 @@ from wear_leveling_MainRun import wear_leveling_MainRun
 class Ui_base(object):
     def setupUi(self, Form):
         ui_width = 800
-        ui_height = 1500
+        ui_height = 1400
         a_width = 500
         a_height = 1200
         Form.setObjectName("Form")
