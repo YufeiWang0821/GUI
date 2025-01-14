@@ -51,16 +51,19 @@ class DrawingArea(QWidget):
     def process_and_save(self):
         # 保存QImage图像
         self.image.save("output_image.png")
-        # 读取保存的PNG文件，转换为PIL图像
+
+        # 读取保存的PNG文件
         pil_image = Image.open("output_image.png").convert('L').resize((28,28))
         img_array = np.array(pil_image, dtype=np.float32)
-
+        
+        # process the image, resize and stuff
         img_array = (img_array*255.0)/img_array.max()
         img_array = img_array/255.0
         img_array = 2*img_array - 1
         img_tensor = torch.tensor(img_array)
         np.savetxt("image_matrix.txt", img_tensor.numpy(), fmt="%.4f", delimiter=" ")
 
+        # quantitize the tensor for fc3
         scale_tensor = torch.tensor([0.0311])
         mnist_tensor = ((img_tensor / scale_tensor)).round().to(torch.int8)
         np.savetxt("output_matrix.txt", mnist_tensor.numpy(), fmt="%d", delimiter=" ")
@@ -70,21 +73,6 @@ class DrawingArea(QWidget):
         array_normalized = tensor_normalized.numpy().astype(np.int8)
         image_normalized = Image.fromarray(array_normalized, mode='L')
         image_normalized.save("output_image_28.png")
-
-        # print(pil_image)
-        # transform = transforms.Compose([
-        #     transforms.Grayscale(num_output_channels=1),
-        #     transforms.Resize((28,28)),
-        #     transforms.ToTensor(),
-        # ])
-        # transformed_image = transform(pil_image)
-        # np.savetxt("image_matrix.txt", transformed_image.squeeze().numpy(), fmt="%.4f", delimiter=" ")
-        # scale_tensor = torch.tensor([0.0311])
-        # transformed_image = transformed_image.unsqueeze(0)
-        # mnist_tensor = ((transformed_image.unsqueeze(0) / scale_tensor)*8-32).round()
-        # mnist_tensor[mnist_tensor>32] = 32
-        # mnist_tensor =  mnist_tensor.to(torch.int8)
-        # np.savetxt("output_matrix.txt", mnist_tensor.squeeze().squeeze().numpy(), fmt="%d", delimiter=" ")
 
 
 class Draw(QWidget):
