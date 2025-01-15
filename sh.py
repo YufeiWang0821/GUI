@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import paramiko
+import paramiko, os
 import threading
 
 class Ui_Sh(object):
@@ -47,6 +47,8 @@ class Ui_Sh(object):
             self.thread.start()
         elif parameter in [3, 10, 11, 12]:
             self.run_executable(parameter)
+        elif parameter in [4, 5, 6, 7, 8, 9]:
+            self.run_script(parameter)
         else:
             return
 
@@ -70,11 +72,39 @@ class Ui_Sh(object):
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
         self.process.start( [self.executable])
 
+    def run_script(self, parameter):
+        if self.process:
+            if self.process.state() == QtCore.QProcess.Running:
+                self.kill_process()
+
+        scripts_dic = {
+            4: "",# 容量
+            5: "",# 乘加计算
+            6: "",# 算力
+            7: "",# 单阵列核心计算能效
+            8: "",# 全芯片处理能效
+            9: "",# 与GPU能效对比
+        }
+        script = scripts_dic.get(parameter, None)
+        if not script:
+            return
+        self.process = QtCore.QProcess(self)
+        self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
+        self.process.start("python", [script])# 使用对应环境的python
+
     def on_readyReadStandardOutput(self):
         if self.process == None:
             return
         output = self.process.readAllStandardOutput().data().decode()
         self.textBrowser.append(output)  # 实时更新textBrowser
+    
+    def kill_process(self):
+        if self.process:
+            pid = self.process.processId()
+            print(f"Now killing the subprocess {pid} of compiler window")
+            if pid:
+                os.system(f"sudo kill -9 {pid}")
+            self.process = None
 
     def closeEvent(self, event):
         # check if subprocess exists
