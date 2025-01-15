@@ -26,21 +26,22 @@ class Ui_Sh(object):
         self.textBrowser.setObjectName("textBrowser")
         
         self.testname = ""
+        self.parameter = parameter
         self.process = QtCore.QProcess(self)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
         # 根据传入的参数来执行逻辑
-        if parameter:
-            self.run_script(parameter)
+        if self.parameter:
+            self.run_stuff(self.parameter)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "脚本运行窗口"))
         self.label.setText(_translate("Form", f"当前正在运行{self.testname}"))
 
-    def run_script(self, parameter):
+    def run_stuff(self, parameter):
         if parameter in [2, 13, 14]:
             # 启动一个新线程来执行脚本
             self.thread = ScriptExecutionThread(parameter, self.textBrowser)
@@ -110,8 +111,8 @@ class Ui_Sh(object):
         # check if subprocess exists
         if self.process:
             if self.process.state() == QtCore.QProcess.Running:
-                self.process.kill()
-        if parameter in [2, 13, 14]:
+                self.kill_process()
+        if self.parameter in [2, 13, 14]:
             self.sever = connect_ssh(self.textBrowser)
             if hasattr(self, 'sever') and self.sever.target_ssh:
                 try:
