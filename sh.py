@@ -111,6 +111,21 @@ class Ui_Sh(object):
         if self.process:
             if self.process.state() == QtCore.QProcess.Running:
                 self.process.kill()
+        if parameter in [2, 13, 14]:
+            self.sever = connect_ssh(self.textBrowser)
+            if hasattr(self, 'sever') and self.sever.target_ssh:
+                try:
+                    # 获取进程 PID 并杀掉进程              
+                    self.sever.execute('pkill -f bnn_mnist.py')  
+                    self.sever.execute('pkill -f func_test.py')
+                    self.sever.execute('pkill -f naive_bayes.py')  
+                    print("相关进程已终止。")
+                except Exception as e:
+                    print(f"终止进程时发生错误: {e}")
+    
+            # 关闭 SSH 连接
+            if hasattr(self, 'sever'):
+                self.sever.close()            
         event.accept()
 
 class ScriptExecutionThread(QtCore.QThread):
