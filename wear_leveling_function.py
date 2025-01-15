@@ -377,4 +377,21 @@ class Ui_WearLeveling(object):
             # 关闭 SFTP 客户端
             sftp.close()
 
+    def closeEvent(self, event):
+        """在关闭窗口时终止正在运行的进程"""
+        if hasattr(self, 'sever') and self.sever.target_ssh:
+            try:
+                # 获取进程 PID 并杀掉进程              
+                self.sever.execute('pkill -f heatmap.py')  # 通过脚本名终止 heatmap.py 进程
+                self.sever.execute('pkill -f violin_plot_250.py')  # 通过脚本名终止 violin_plot_250.py 进程
+                print("相关进程已终止。")
+            except Exception as e:
+                print(f"终止进程时发生错误: {e}")
+
+        # 关闭 SSH 连接
+        if hasattr(self, 'sever'):
+            self.sever.close()
+
+        # 窗口正常关闭
+        event.accept()
 
