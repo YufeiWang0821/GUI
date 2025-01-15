@@ -21,3 +21,4 @@ output_matrix.txt
 .DS_store
 .vscode
 *.gif
+*.log

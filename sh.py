@@ -6,23 +6,23 @@ class Ui_Sh(object):
     def setupUi(self, Form, parameter=None):
         Form.setObjectName("Form")
         Form.setStyleSheet("background-color: #f5f5f5;")  # 设置背景色为浅灰色
-        ui_width = 500
-        ui_height = 500
+        ui_width = 2000
+        ui_height = 1000
         Form.resize(ui_width, ui_height)
         Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
         Form.setMaximumSize(QtCore.QSize(ui_width, ui_height))
 
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(30, 10, 401, 41))
+        self.label.setGeometry(QtCore.QRect(30, 10, ui_width-60, 40))
         self.label.setObjectName("label")
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
-        font.setPointSize(14)  # 增加标题字体大小
+        font.setPointSize(12)  # 增加标题字体大小
         font.setBold(True)
         self.label.setFont(font)
         self.label.setStyleSheet("color: #333333;")
         self.textBrowser = QtWidgets.QTextBrowser(Form)
-        self.textBrowser.setGeometry(QtCore.QRect(30, 60, 430, 400))
+        self.textBrowser.setGeometry(QtCore.QRect(30, 60, ui_width-60, ui_height-120))
         self.textBrowser.setObjectName("textBrowser")
         
         self.testname = {
@@ -94,8 +94,8 @@ class Ui_Sh(object):
                 self.kill_process()
 
         scripts_dic = {
-            4: "",# 容量
-            5: "",# 乘加计算
+            4: "/home/user/workspaces/cpp/MRAM_Driver/tests/mram_test.py",# 容量
+            5: "test.py",# 乘加计算
             6: "",# 算力
             7: "",# 单阵列核心计算能效
             8: "",# 全芯片处理能效
@@ -105,14 +105,21 @@ class Ui_Sh(object):
         if not script:
             return
         self.process = QtCore.QProcess(self)
+        self.process.setProcessChannelMode(QtCore.QProcess.MergedChannels)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
-        self.process.start("python", [script])# 使用对应环境的python
+        self.process.finished.connect(self.on_finished)
+        self.process.start("sudo", ["/usr/bin/python3.11", script])# 使用对应环境的python
+        if not self.process.waitForStarted():
+            print("Error: Fail to start!")
 
     def on_readyReadStandardOutput(self):
         if self.process == None:
             return
         output = self.process.readAllStandardOutput().data().decode()
         self.textBrowser.append(output)  # 实时更新textBrowser
+
+    def on_finished(self):
+        self.textBrowser.append('<span style = "color: green; font-weight: bold;">The subprocess has completed. You may exit now</span>')
     
     def kill_process(self):
         if self.process:
