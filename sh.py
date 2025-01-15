@@ -25,7 +25,22 @@ class Ui_Sh(object):
         self.textBrowser.setGeometry(QtCore.QRect(30, 60, 430, 400))
         self.textBrowser.setObjectName("textBrowser")
         
-        self.testname = ""
+        self.testname = {
+            2:"Binary FC-3算法识别准确率",
+            3:"RRAM芯片 能效测试",
+            4:"MRAM芯片 容量测试",
+            5:"MRAM芯片 1-8bit位宽乘加计算测试",
+            6:"MRAM芯片 算力测试",
+            7:"MRAM芯片 单阵列核心计算能效测试",
+            8:"MRAM芯片 全芯片处理能效测试",
+            9:"MRAM芯片 与GPU的能效对比测试",
+            10:"RRAM芯片 算力测试",
+            11:"RRAM芯片 1、8、16bit位宽乘加计算测试",
+            12:"RRAM芯片 容量测试",
+            13:"Binary LeNet-5算法识别准确率",
+            14:"Naive Bayes算法识别准确率",
+        }
+
         self.parameter = parameter
         self.process = QtCore.QProcess(self)
 
@@ -39,7 +54,7 @@ class Ui_Sh(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "脚本运行窗口"))
-        self.label.setText(_translate("Form", f"当前正在运行{self.testname}"))
+        self.label.setText(_translate("Form", f"当前正在运行{self.testname.get(self.parameter, None)}"))
 
     def run_stuff(self, parameter):
         if parameter in [2, 13, 14]:
