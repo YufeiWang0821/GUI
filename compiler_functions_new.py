@@ -9,7 +9,7 @@ import re
 import os
 
 class Ui_Compiler(object):
-    def setupUi(self, Form):
+    def setupUi(self, Form, parameter=None):
         ui_width = 900
         ui_height = 1200
         a_width = 800
@@ -25,6 +25,9 @@ class Ui_Compiler(object):
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(1000)  # 每秒刷新一次
         self.timer_started = False
+
+        self.parameter = parameter
+        self.chip = "MRAM" if self.parameter==16 else "RRAM"
 
         self.layoutWidget = QtWidgets.QWidget(Form)
         self.layoutWidget.setGeometry(QtCore.QRect(50, 20, a_width, a_height))
@@ -158,8 +161,11 @@ class Ui_Compiler(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "板卡GUI"))
-        self.label.setText(_translate("Form", "请选择功能"))
+        Form.setWindowTitle(_translate("Form", f"{self.chip}芯片应用负载运行测试"))
+        if self.parameter == 16:
+            self.label.setText(_translate("Form", "<center>当前使用<font color='orange'>MRAM</font>芯片运行应用<br>请选择功能</center>"))
+        elif self.parameter == 17:
+            self.label.setText(_translate("Form", "<center>当前使用<font color='blue'>RRAM</font>芯片运行应用<br>请选择功能</center>"))
         self.radioButton.setText(_translate("Form", "LeNet-5 Inference on CIFAR10"))
         self.radioButton_2.setText(_translate("Form", "FC-3 Inference on MNIST"))
         self.radioButton_3.setText(_translate("Form", "SNN Inference"))

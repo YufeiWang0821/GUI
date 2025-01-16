@@ -179,6 +179,11 @@ class Ui_base(object):
         self.radioButton_16.setStyleSheet("color: #333333;")
         self.verticalLayout_5.addWidget(self.radioButton_16)
         #
+        self.radioButton_17 = QtWidgets.QRadioButton(self.layoutWidget)
+        self.radioButton_17.setObjectName("radioButton_17")
+        self.radioButton_17.setStyleSheet("color: #333333;")
+        self.verticalLayout_5.addWidget(self.radioButton_17)
+        #
         self.verticalLayout_6.addLayout(self.verticalLayout_5)
 
         spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -222,6 +227,7 @@ class Ui_base(object):
         self.radioButton_15.setFont(font)
         self.label_4.setFont(font)
         self.radioButton_16.setFont(font)
+        self.radioButton_17.setFont(font)
         self.pushButton.setFont(font)
 
         # button集合
@@ -241,6 +247,7 @@ class Ui_base(object):
         self.button_group.addButton(self.radioButton_14, 14)
         self.button_group.addButton(self.radioButton_15, 15)
         self.button_group.addButton(self.radioButton_16, 16)
+        self.button_group.addButton(self.radioButton_17, 17)
 
         self.retranslateUi(Form)
         self.pushButton.clicked.connect(self.on_push_button_click)
@@ -269,7 +276,8 @@ class Ui_base(object):
         self.label_5.setText(_translate("Form", "系统寿命与通信开销"))
         self.radioButton_15.setText(_translate("Form", "测试"))
         self.label_4.setText(_translate("Form", "编译器"))
-        self.radioButton_16.setText(_translate("Form", "负载测试"))
+        self.radioButton_16.setText(_translate("Form", "MRAM芯片应用负载测试"))
+        self.radioButton_17.setText(_translate("Form", "RRAM芯片应用负载测试"))
         self.pushButton.setText(_translate("Form", "开始测试"))
 
     # 判断应该调用哪个子窗口
@@ -277,8 +285,9 @@ class Ui_base(object):
         chosen_id = self.button_group.id(button)
         if chosen_id == 15:
             self.chosen_Ui = 1
-        elif chosen_id == 16:
+        elif chosen_id in [16, 17]:
             self.chosen_Ui = 2
+            self.mnr = chosen_id
         elif chosen_id in range(2,15):
             self.chosen_Ui = 0
             self.shpara = chosen_id
@@ -293,7 +302,7 @@ class Ui_base(object):
         elif self.chosen_Ui == 1:# 调用磨损均衡窗口
             window_class = wear_leveling_MainRun()
         elif self.chosen_Ui == 2:# 调用编译器窗口
-            window_class = compiler_MainRun()
+            window_class = compiler_MainRun(parameter=self.mnr)
         # else:
         #     QMessageBox.warning(None, "选择提示", "请先选择一个选项！")
         #     return
