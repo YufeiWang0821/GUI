@@ -22,3 +22,5 @@ output_matrix.txt
 .vscode
 *.gif
 *.log
+
+bin/*
