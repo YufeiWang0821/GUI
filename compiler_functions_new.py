@@ -182,6 +182,8 @@ class Ui_Compiler(object):
         event.accept()
 
     def run_selected_dataset(self):
+        # 清空之前的画布
+        self.figure.clear()
         # Determine which dataset is selected
         if self.radioButton.isChecked():
             self.executable = "../build/bin/lenet5-quan-run"  # Executable for Cifar-10
