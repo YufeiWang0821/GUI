@@ -19,9 +19,9 @@ from wear_leveling_MainRun import wear_leveling_MainRun
 class Ui_base(object):
     def setupUi(self, Form):
         ui_width = 800
-        ui_height = 1400
+        ui_height = 1200
         a_width = 500
-        a_height = 1200
+        a_height = ui_height-175
         Form.setObjectName("Form")
         Form.resize(ui_width, ui_height)
         Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
@@ -273,7 +273,7 @@ class Ui_base(object):
         self.radioButton_2.setText(_translate("Form", "Binary FC-3算法识别准确率"))
         self.radioButton_13.setText(_translate("Form", "Binary LeNet-5算法识别准确率"))
         self.radioButton_14.setText(_translate("Form", "Naive Bayes算法识别准确率"))
-        self.label_5.setText(_translate("Form", "系统寿命与通信开销"))
+        self.label_5.setText(_translate("Form", "系统寿命"))
         self.radioButton_15.setText(_translate("Form", "测试"))
         self.label_4.setText(_translate("Form", "编译器"))
         self.radioButton_16.setText(_translate("Form", "MRAM芯片应用负载测试"))
