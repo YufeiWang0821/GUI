@@ -168,7 +168,7 @@ class Ui_Compiler(object):
             self.label.setText(_translate("Form", "<center>当前使用<font color='blue'>RRAM</font>芯片运行应用<br>请选择功能</center>"))
         self.radioButton.setText(_translate("Form", "LeNet-5 Inference on CIFAR10"))
         self.radioButton_2.setText(_translate("Form", "FC-3 Inference on MNIST"))
-        self.radioButton_3.setText(_translate("Form", "SNN Inference"))
+        self.radioButton_3.setText(_translate("Form", "SNN Inference on DVSGesture"))
         self.radioButton_4.setText(_translate("Form", "FC-3 手写数字识别"))
         self.pushButton.setText(_translate("Form", "运行指定功能"))
         self.label_2.setText(_translate("Form", "运行结果"))

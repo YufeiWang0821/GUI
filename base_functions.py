@@ -258,7 +258,7 @@ class Ui_base(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "测试项选择"))
         self.label.setText(_translate("Form", "MRAM芯片"))
-        self.radioButton_4.setText(_translate("Form", "容量"))
+        self.radioButton_4.setText(_translate("Form", "容量和乘加计算"))
         # self.radioButton_5.setText(_translate("Form", "1-8bit位宽乘加计算"))
         # self.radioButton_6.setText(_translate("Form", "算力"))
         # self.radioButton_7.setText(_translate("Form", "单阵列核心计算能效"))
