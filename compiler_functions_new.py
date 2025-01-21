@@ -179,6 +179,7 @@ class Ui_Compiler(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
         self.executable = None  # To store the selected executable
+        self.predictions = {}
         self.process = QtCore.QProcess(self)
 
     def retranslateUi(self, Form):
@@ -207,7 +208,7 @@ class Ui_Compiler(object):
     def run_selected_dataset(self):
         # 清空之前的画布
         self.figure.clear()
-        self.current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        self.current_time = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
         # Determine which dataset is selected
         if self.radioButton.isChecked():
             self.executable = "../build/bin/lenet5-quan-run"  # Executable for Cifar-10
@@ -317,8 +318,11 @@ class Ui_Compiler(object):
 
         # 检查 predictions 是否为空
         if not self.predictions:
-            self.info_label.setText("错误：没有可用的预测数据！")
-            return
+            if self.saved_predictions:
+                use_saved_pre = True
+            else:
+                self.info_label.setText("错误：没有可用的预测数据！")
+                return
         # 获取用户输入的图片序号
         try:
             image_index = int(self.input_line.text())  # 获取输入框中的序号，并尝试转换为整数
@@ -348,7 +352,10 @@ class Ui_Compiler(object):
             return
         # 显示对应的预测数据
         try:
-            prediction_data = self.predictions[f"test_{image_index}.txt"]
+            if(use_saved_pre):
+                prediction_data = self.saved_predictions[f"test_{image_index}.txt"]
+            else:
+                prediction_data = self.predictions[f"test_{image_index}.txt"]
             self.info_label.setText(f"{prediction_data}")
         except:
             self.info_label.setText("Not yet inferred.")
@@ -360,7 +367,25 @@ class Ui_Compiler(object):
             json.dump(self.predictions, file, ensure_ascii=False, indent=4)
 
     def show_saved_data(self):
-        read_file_path = "todo.txt"
+        if self.radioButton.isChecked():
+            self.hmsize = 10
+            if self.parameter ==16:# MRAM saved data
+                read_file_path = "LeNet5-2025-01-21-14:23:00.txt"
+            else:
+                read_file_path = ""
+        elif self.radioButton_2.isChecked():
+            self.hmsize = 10
+            if self.parameter ==16:
+                read_file_path = "FC3-2025-01-21-13:30:12.txt"
+            else:
+                read_file_path = ""
+        elif self.radioButton_3.isChecked():
+            self.hmsize = 11
+            if self.parameter ==16:
+                read_file_path = "SNN-2025-01-21-14:38:50.txt"
+            else:
+                read_file_path = ""
+        
         # 从 txt 文件读取字典
         with open(read_file_path, "r", encoding="utf-8") as file:
             self.saved_predictions = json.load(file)
