@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from draw import Draw
+from datetime import datetime
 import re
 import os
+import json
 
 class Ui_Compiler(object):
     def setupUi(self, Form, parameter=None):
@@ -96,6 +98,25 @@ class Ui_Compiler(object):
             """
         )
         self.horizontalLayout0.addWidget(self.pushButton)
+        #
+        self.pushButton2 = QtWidgets.QPushButton(self.layoutWidget)
+        self.pushButton2.setFont(font)
+        self.pushButton2.setObjectName("pushButton2")
+        self.pushButton2.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                padding: 10px 20px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+            """
+        )
+        self.horizontalLayout0.addWidget(self.pushButton2)
+        #
         self.verticalLayout_2.addLayout(self.horizontalLayout0)
 
         # 运行结果标签
@@ -154,6 +175,7 @@ class Ui_Compiler(object):
         # 设置文本内容和按钮事件
         self.retranslateUi(Form)
         self.pushButton.clicked.connect(self.run_selected_dataset)  # Connect button to method
+        self.pushButton2.clicked.connect(self.show_saved_data) # Show saved data
         QtCore.QMetaObject.connectSlotsByName(Form)
 
         self.executable = None  # To store the selected executable
@@ -171,6 +193,7 @@ class Ui_Compiler(object):
         self.radioButton_3.setText(_translate("Form", "SNN Inference on DVSGesture"))
         self.radioButton_4.setText(_translate("Form", "FC-3 手写数字识别"))
         self.pushButton.setText(_translate("Form", "运行指定功能"))
+        self.pushButton2.setText(_translate("Form", "显示保存结果"))
         self.label_2.setText(_translate("Form", "运行结果"))
 
     def closeEvent(self, event):
@@ -184,21 +207,25 @@ class Ui_Compiler(object):
     def run_selected_dataset(self):
         # 清空之前的画布
         self.figure.clear()
+        self.current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         # Determine which dataset is selected
         if self.radioButton.isChecked():
             self.executable = "../build/bin/lenet5-quan-run"  # Executable for Cifar-10
+            self.app = "LeNet5"
             self.hmsize = 10
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
             self.timer_started = False
         elif self.radioButton_2.isChecked():
             self.executable = "../build/bin/fc3-quan-run"  # Executable for MNIST
+            self.app = "FC3"
             self.hmsize = 10
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
             self.timer_started = False
         elif self.radioButton_3.isChecked():
             self.executable = "../build/bin/snn-quan-run"
+            self.app = "SNN"
             self.hmsize = 11
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
@@ -221,6 +248,7 @@ class Ui_Compiler(object):
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
         self.process.start("sudo", [executable])
+        self.process.finished.connect(self.on_finished)
         # if not self.timer_started:
         #     print("timer started")
         #     self.timer_started = True
@@ -325,6 +353,27 @@ class Ui_Compiler(object):
         except:
             self.info_label.setText("Not yet inferred.")
             return
+        
+    def on_finished(self):
+        save_file_path = f"{self.app}-{self.current_time}.txt"
+        with open(save_file_path, "w", encoding="utf-8") as file:
+            json.dump(self.predictions, file, ensure_ascii=False, indent=4)
+
+    def show_saved_data(self):
+        read_file_path = "todo.txt"
+        # 从 txt 文件读取字典
+        with open(read_file_path, "r", encoding="utf-8") as file:
+            self.saved_predictions = json.load(file)
+        # 初始化一个10x10的矩阵，表示10个类别的混淆矩阵
+        confusion_matrix = np.zeros((self.hmsize, self.hmsize), dtype=int)
+        # 遍历每一张图片的预测结果
+        for image_name, data in self.saved_predictions.items():
+            true_label = data["label"]
+            predicted_label = data["predicted"]
+            # 更新混淆矩阵的对应位置
+            confusion_matrix[true_label][predicted_label] += 1
+        # 绘制热力图
+        self.draw_heatmap(confusion_matrix)
     
     def kill_process(self):
         if self.process:
