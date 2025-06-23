@@ -27,16 +27,16 @@ class Ui_Sh(object):
         
         self.testname = {
             2:"Binary FC-3算法识别准确率",
-            3:"RRAM芯片 能效测试",
-            4:"MRAM芯片 容量测试",
-            5:"MRAM芯片 1-8bit位宽乘加计算测试",
-            6:"MRAM芯片 算力测试",
-            7:"MRAM芯片 单阵列核心计算能效测试",
-            8:"MRAM芯片 全芯片处理能效测试",
-            9:"MRAM芯片 与GPU的能效对比测试",
-            10:"RRAM芯片 算力测试",
-            11:"RRAM芯片 1、8、16bit位宽乘加计算测试",
-            12:"RRAM芯片 容量测试",
+            # 3:"RRAM芯片 能效测试",
+            4:"<font color='orange'>MRAM</font>芯片 容量测试",
+            # 5:"MRAM芯片 1-8bit位宽乘加计算测试",
+            # 6:"MRAM芯片 算力测试",
+            # 7:"MRAM芯片 单阵列核心计算能效测试",
+            # 8:"MRAM芯片 全芯片处理能效测试",
+            # 9:"MRAM芯片 与GPU的能效对比测试",
+            10:"<font color='blue'>RRAM</font>芯片 算力测试",
+            11:"<font color='blue'>RRAM</font>芯片 1、8、16bit位宽乘加计算测试",
+            12:"<font color='blue'>RRAM</font>芯片 容量测试",
             13:"Binary LeNet-5算法识别准确率",
             14:"Naive Bayes算法识别准确率",
         }
@@ -76,17 +76,18 @@ class Ui_Sh(object):
         if parameter == 3:
             self.executable = ""# 能效
         elif parameter == 10:
-            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/TOPSTest"# 算力
+            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/TOPSTest/home/luhongye/workspaces/software/GUI/bin/TOPSTest"# 算力
         elif parameter == 11:
-            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/computeCorrectnessTest"# 乘加计算
+            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/computeCorrectnessTest/home/luhongye/workspaces/software/GUI/bin/computeCorrectnessTest"# 乘加计算
         elif parameter == 12:
-            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/allRRAMTest"# 容量
+            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/allRRAMTest/home/luhongye/workspaces/software/GUI/bin/allRRAMTest"# 容量
         else:
             return
         
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
-        self.process.start("sudo", [self.executable])
+        print(self.executable)
+        self.process.start("sudo","sudo", [self.executable])
 
     def run_script(self, parameter):
         if self.process:

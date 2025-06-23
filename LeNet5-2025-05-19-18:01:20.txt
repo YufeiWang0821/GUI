@@ -1,0 +1,54 @@
+{
+    "test_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_2.txt": {
+        "label": 8,
+        "predicted": 1
+    },
+    "test_3.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_4.txt": {
+        "label": 6,
+        "predicted": 4
+    },
+    "test_5.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_6.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "test_7.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_8.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_9.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "test_10.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_11.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_12.txt": {
+        "label": 5,
+        "predicted": 5
+    }
+}

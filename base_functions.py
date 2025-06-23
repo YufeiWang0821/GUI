@@ -19,9 +19,9 @@ from wear_leveling_MainRun import wear_leveling_MainRun
 class Ui_base(object):
     def setupUi(self, Form):
         ui_width = 800
-        ui_height = 1400
+        ui_height = 1200
         a_width = 500
-        a_height = 1200
+        a_height = ui_height-175
         Form.setObjectName("Form")
         Form.resize(ui_width, ui_height)
         Form.setMinimumSize(QtCore.QSize(ui_width, ui_height))
@@ -64,31 +64,31 @@ class Ui_base(object):
         self.radioButton_4.setObjectName("radioButton_4")
         self.radioButton_4.setStyleSheet("color: #333333;")
         self.verticalLayout.addWidget(self.radioButton_4)
-        #
-        self.radioButton_5 = QtWidgets.QRadioButton(self.layoutWidget)
-        self.radioButton_5.setObjectName("radioButton_5")
-        self.radioButton_5.setStyleSheet("color: #333333;")
-        self.verticalLayout.addWidget(self.radioButton_5)
-        #
-        self.radioButton_6 = QtWidgets.QRadioButton(self.layoutWidget)
-        self.radioButton_6.setObjectName("radioButton_6")
-        self.radioButton_6.setStyleSheet("color: #333333;")
-        self.verticalLayout.addWidget(self.radioButton_6)
-        #
-        self.radioButton_7 = QtWidgets.QRadioButton(self.layoutWidget)
-        self.radioButton_7.setObjectName("radioButton_7")
-        self.radioButton_7.setStyleSheet("color: #333333;")
-        self.verticalLayout.addWidget(self.radioButton_7)
-        #
-        self.radioButton_8 = QtWidgets.QRadioButton(self.layoutWidget)
-        self.radioButton_8.setObjectName("radioButton_8")
-        self.radioButton_8.setStyleSheet("color: #333333;")
-        self.verticalLayout.addWidget(self.radioButton_8)
-        #
-        self.radioButton_9 = QtWidgets.QRadioButton(self.layoutWidget)
-        self.radioButton_9.setObjectName("radioButton_9")
-        self.radioButton_9.setStyleSheet("color: #333333;")
-        self.verticalLayout.addWidget(self.radioButton_9)
+        # #
+        # self.radioButton_5 = QtWidgets.QRadioButton(self.layoutWidget)
+        # self.radioButton_5.setObjectName("radioButton_5")
+        # self.radioButton_5.setStyleSheet("color: #333333;")
+        # self.verticalLayout.addWidget(self.radioButton_5)
+        # #
+        # self.radioButton_6 = QtWidgets.QRadioButton(self.layoutWidget)
+        # self.radioButton_6.setObjectName("radioButton_6")
+        # self.radioButton_6.setStyleSheet("color: #333333;")
+        # self.verticalLayout.addWidget(self.radioButton_6)
+        # #
+        # self.radioButton_7 = QtWidgets.QRadioButton(self.layoutWidget)
+        # self.radioButton_7.setObjectName("radioButton_7")
+        # self.radioButton_7.setStyleSheet("color: #333333;")
+        # self.verticalLayout.addWidget(self.radioButton_7)
+        # #
+        # self.radioButton_8 = QtWidgets.QRadioButton(self.layoutWidget)
+        # self.radioButton_8.setObjectName("radioButton_8")
+        # self.radioButton_8.setStyleSheet("color: #333333;")
+        # self.verticalLayout.addWidget(self.radioButton_8)
+        # #
+        # self.radioButton_9 = QtWidgets.QRadioButton(self.layoutWidget)
+        # self.radioButton_9.setObjectName("radioButton_9")
+        # self.radioButton_9.setStyleSheet("color: #333333;")
+        # self.verticalLayout.addWidget(self.radioButton_9)
         #
         self.verticalLayout_6.addLayout(self.verticalLayout)
 
@@ -115,11 +115,11 @@ class Ui_base(object):
         self.radioButton_10.setObjectName("radioButton_10")
         self.radioButton_10.setStyleSheet("color: #333333;")
         self.verticalLayout_2.addWidget(self.radioButton_10)
-        #
-        # self.radioButton_3 = QtWidgets.QRadioButton(self.layoutWidget)
-        # self.radioButton_3.setObjectName("radioButton_3")
-        # self.radioButton_3.setStyleSheet("color: #333333;")
-        # self.verticalLayout_2.addWidget(self.radioButton_3)
+        # #
+        # # self.radioButton_3 = QtWidgets.QRadioButton(self.layoutWidget)
+        # # self.radioButton_3.setObjectName("radioButton_3")
+        # # self.radioButton_3.setStyleSheet("color: #333333;")
+        # # self.verticalLayout_2.addWidget(self.radioButton_3)
         #
         self.verticalLayout_6.addLayout(self.verticalLayout_2)
 
@@ -209,16 +209,16 @@ class Ui_base(object):
 
         self.label.setFont(font)
         self.radioButton_4.setFont(font)
-        self.radioButton_5.setFont(font)
-        self.radioButton_6.setFont(font)
-        self.radioButton_7.setFont(font)
-        self.radioButton_8.setFont(font)
-        self.radioButton_9.setFont(font)
+        # self.radioButton_5.setFont(font)
+        # self.radioButton_6.setFont(font)
+        # self.radioButton_7.setFont(font)
+        # self.radioButton_8.setFont(font)
+        # self.radioButton_9.setFont(font)
         self.label_2.setFont(font)
         self.radioButton_12.setFont(font)
         self.radioButton_11.setFont(font)
         self.radioButton_10.setFont(font)
-        #self.radioButton_3.setFont(font)
+        # #self.radioButton_3.setFont(font)
         self.label_3.setFont(font)
         self.radioButton_2.setFont(font)
         self.radioButton_13.setFont(font)
@@ -233,13 +233,13 @@ class Ui_base(object):
         # button集合
         self.button_group = QtWidgets.QButtonGroup(Form)
         self.button_group.addButton(self.radioButton_2, 2)
-        #self.button_group.addButton(self.radioButton_3, 3)
+        # #self.button_group.addButton(self.radioButton_3, 3)
         self.button_group.addButton(self.radioButton_4, 4)
-        self.button_group.addButton(self.radioButton_5, 5)
-        self.button_group.addButton(self.radioButton_6, 6)
-        self.button_group.addButton(self.radioButton_7, 7)
-        self.button_group.addButton(self.radioButton_8, 8)
-        self.button_group.addButton(self.radioButton_9, 9)
+        # self.button_group.addButton(self.radioButton_5, 5)
+        # self.button_group.addButton(self.radioButton_6, 6)
+        # self.button_group.addButton(self.radioButton_7, 7)
+        # self.button_group.addButton(self.radioButton_8, 8)
+        # self.button_group.addButton(self.radioButton_9, 9)
         self.button_group.addButton(self.radioButton_10, 10)
         self.button_group.addButton(self.radioButton_11, 11)
         self.button_group.addButton(self.radioButton_12, 12)
@@ -258,22 +258,22 @@ class Ui_base(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "测试项选择"))
         self.label.setText(_translate("Form", "MRAM芯片"))
-        self.radioButton_4.setText(_translate("Form", "容量"))
-        self.radioButton_5.setText(_translate("Form", "1-8bit位宽乘加计算"))
-        self.radioButton_6.setText(_translate("Form", "算力"))
-        self.radioButton_7.setText(_translate("Form", "单阵列核心计算能效"))
-        self.radioButton_8.setText(_translate("Form", "全芯片处理能效"))
-        self.radioButton_9.setText(_translate("Form", "与GPU的能效对比"))
+        self.radioButton_4.setText(_translate("Form", "容量和乘加计算"))
+        # self.radioButton_5.setText(_translate("Form", "1-8bit位宽乘加计算"))
+        # self.radioButton_6.setText(_translate("Form", "算力"))
+        # self.radioButton_7.setText(_translate("Form", "单阵列核心计算能效"))
+        # self.radioButton_8.setText(_translate("Form", "全芯片处理能效"))
+        # self.radioButton_9.setText(_translate("Form", "与GPU的能效对比"))
         self.label_2.setText(_translate("Form", "RRAM芯片"))
         self.radioButton_12.setText(_translate("Form", "容量"))
         self.radioButton_11.setText(_translate("Form", "1、8、16bit位宽乘加计算"))
         self.radioButton_10.setText(_translate("Form", "算力"))
-        #self.radioButton_3.setText(_translate("Form", "能效"))
+        # #self.radioButton_3.setText(_translate("Form", "能效"))
         self.label_3.setText(_translate("Form", "IR-Drop"))
         self.radioButton_2.setText(_translate("Form", "Binary FC-3算法识别准确率"))
         self.radioButton_13.setText(_translate("Form", "Binary LeNet-5算法识别准确率"))
         self.radioButton_14.setText(_translate("Form", "Naive Bayes算法识别准确率"))
-        self.label_5.setText(_translate("Form", "系统寿命与通信开销"))
+        self.label_5.setText(_translate("Form", "系统寿命"))
         self.radioButton_15.setText(_translate("Form", "测试"))
         self.label_4.setText(_translate("Form", "编译器"))
         self.radioButton_16.setText(_translate("Form", "MRAM芯片应用负载测试"))

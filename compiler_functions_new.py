@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from draw import Draw
+from datetime import datetime
 import re
 import os
+import json
 
 class Ui_Compiler(object):
     def setupUi(self, Form, parameter=None):
@@ -96,6 +98,25 @@ class Ui_Compiler(object):
             """
         )
         self.horizontalLayout0.addWidget(self.pushButton)
+        #
+        self.pushButton2 = QtWidgets.QPushButton(self.layoutWidget)
+        self.pushButton2.setFont(font)
+        self.pushButton2.setObjectName("pushButton2")
+        self.pushButton2.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                padding: 10px 20px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+            """
+        )
+        self.horizontalLayout0.addWidget(self.pushButton2)
+        #
         self.verticalLayout_2.addLayout(self.horizontalLayout0)
 
         # 运行结果标签
@@ -123,7 +144,7 @@ class Ui_Compiler(object):
         font.setPointSize(10)
         self.input_line.setFont(font)
         self.input_line.setStyleSheet("background-color: #ffffff; border: 1px solid #cccccc; padding: 10px;")
-        self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
+        self.input_line.returnPressed.connect(self.update_image)  # 按下回车时更新图片
         self.left_layout.addWidget(self.input_line)
         #左侧组件设置
         self.image_label.setFixedWidth(leftlayout_width)
@@ -132,7 +153,7 @@ class Ui_Compiler(object):
         self.horizontalLayout.addLayout(self.left_layout)
 
         # 热力图组件
-        self.figure = plt.figure(facecolor="#f5f5f5")
+        self.figure = plt.figure(0, facecolor="#f5f5f5")
         self.canvas = FigureCanvas(self.figure)
         # 将热力图组件放入一个QWidget容器中
         self.canvas_widget = QtWidgets.QWidget(self.layoutWidget)
@@ -154,9 +175,11 @@ class Ui_Compiler(object):
         # 设置文本内容和按钮事件
         self.retranslateUi(Form)
         self.pushButton.clicked.connect(self.run_selected_dataset)  # Connect button to method
+        self.pushButton2.clicked.connect(self.show_saved_data) # Show saved data
         QtCore.QMetaObject.connectSlotsByName(Form)
 
         self.executable = None  # To store the selected executable
+        self.predictions = {}
         self.process = QtCore.QProcess(self)
 
     def retranslateUi(self, Form):
@@ -168,9 +191,10 @@ class Ui_Compiler(object):
             self.label.setText(_translate("Form", "<center>当前使用<font color='blue'>RRAM</font>芯片运行应用<br>请选择功能</center>"))
         self.radioButton.setText(_translate("Form", "LeNet-5 Inference on CIFAR10"))
         self.radioButton_2.setText(_translate("Form", "FC-3 Inference on MNIST"))
-        self.radioButton_3.setText(_translate("Form", "SNN Inference"))
+        self.radioButton_3.setText(_translate("Form", "SNN Inference on DVSGesture"))
         self.radioButton_4.setText(_translate("Form", "FC-3 手写数字识别"))
         self.pushButton.setText(_translate("Form", "运行指定功能"))
+        self.pushButton2.setText(_translate("Form", "显示保存结果"))
         self.label_2.setText(_translate("Form", "运行结果"))
 
     def closeEvent(self, event):
@@ -182,21 +206,27 @@ class Ui_Compiler(object):
         event.accept()
 
     def run_selected_dataset(self):
+        # 清空之前的画布
+        self.figure.clear()
+        self.current_time = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
         # Determine which dataset is selected
         if self.radioButton.isChecked():
             self.executable = "../build/bin/lenet5-quan-run"  # Executable for Cifar-10
+            self.app = "LeNet5"
             self.hmsize = 10
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
             self.timer_started = False
         elif self.radioButton_2.isChecked():
             self.executable = "../build/bin/fc3-quan-run"  # Executable for MNIST
+            self.app = "FC3"
             self.hmsize = 10
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
             self.timer_started = False
         elif self.radioButton_3.isChecked():
             self.executable = "../build/bin/snn-quan-run"
+            self.app = "SNN"
             self.hmsize = 11
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
@@ -219,6 +249,7 @@ class Ui_Compiler(object):
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
         self.process.start("sudo", [executable])
+        self.process.finished.connect(self.on_finished)
         # if not self.timer_started:
         #     print("timer started")
         #     self.timer_started = True
@@ -284,11 +315,14 @@ class Ui_Compiler(object):
     def update_image(self):
         # 清空图片
         self.image_label.clear()
-
+        use_saved_pre = False
         # 检查 predictions 是否为空
         if not self.predictions:
-            self.info_label.setText("错误：没有可用的预测数据！")
-            return
+            if self.saved_predictions:
+                use_saved_pre = True
+            else:
+                self.info_label.setText("错误：没有可用的预测数据！")
+                return
         # 获取用户输入的图片序号
         try:
             image_index = int(self.input_line.text())  # 获取输入框中的序号，并尝试转换为整数
@@ -298,13 +332,59 @@ class Ui_Compiler(object):
         # 检查序号是否合法
         if self.radioButton.isChecked():
             dataset_name = "cifar10/images"
+            self.app = "LeNet5"
         elif self.radioButton_2.isChecked():
             dataset_name = "MNIST"
+            self.app = "FC3"
         else:
             self.info_label.setText("错误：当前选项没有可显示图片！")
 
         # 如果序号合法，显示对应的图片和预测数据
-        image_path = f"data/{dataset_name}/test_{image_index}.png"
+        try:
+            image_path = f"data/{dataset_name}/test_{image_index}.png"
+        except:
+            # self.info_label.setText("SNN has no images")
+            pred = self.predictions if not use_saved_pre else self.saved_predictions
+            keys = list(pred.keys())
+            values = list(pred.values())
+            try:
+                print(keys[image_index])
+            except:
+                self.info_label.setText(f"not yet inferred")
+                return
+            match = re.search(r"(\d+)/(.*)\.txt", keys[image_index])
+            print(match.groups())
+
+            if match:
+                id, name = match.groups()
+                file_name = "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/frames_number_16_split_by_number/test/"+str(id)+"/"+name+".npz"
+                data = np.load(file_name)
+                frames = data['frames']
+
+                self.info_label.setText(f"{values[image_index]}")
+                plt.figure(1)
+                plt.clf()
+                for i in range(16):
+                    plt.imshow(frames[i][0]+frames[i][1], cmap="jet")
+                    plt.grid(False)
+                    plt.xticks([])
+                    plt.yticks([])
+                    plt.show()
+                    plt.pause(0.1)
+
+            return
+        cifar10 = {
+            0 : "airplane",
+            1 : "automobile",
+            2 : "bird",
+            3 : "cat",
+            4 : "deer",
+            5 : "dog",
+            6 : "frog",
+            7 : "horse",
+            8 : "ship",
+            9 : "truck"
+        }
         try:
             # 尝试加载图片
             pixmap = QtGui.QPixmap(image_path)
@@ -318,11 +398,69 @@ class Ui_Compiler(object):
             return
         # 显示对应的预测数据
         try:
-            prediction_data = self.predictions[f"test_{image_index}.txt"]
-            self.info_label.setText(f"{prediction_data}")
+            if(use_saved_pre):
+                print("saved predictions")
+                prediction_data = self.saved_predictions[f"test_{image_index}.txt"]
+            else:
+                print("predictions")
+                prediction_data = self.predictions[f"test_{image_index}.txt"]
+            print(self.app)
+            if(self.app == "FC3"):
+                self.info_label.setText(f"{prediction_data}")
+            elif(self.app == "LeNet5"):
+                print("lenet5")
+                self.info_label.setText(f"'label': {prediction_data['label']}({cifar10[prediction_data['label']]}),\n'predicted': {prediction_data['predicted']}({cifar10[prediction_data['predicted']]})")
+                # self.info_label.setText(f"'label': {cifar10[prediction_data['label']]},\n'predicted': {cifar10[prediction_data['predicted']]}")
         except:
             self.info_label.setText("Not yet inferred.")
             return
+        
+    def on_finished(self):
+        save_file_path = f"{self.app}-{self.current_time}.txt"
+        with open(save_file_path, "w", encoding="utf-8") as file:
+            json.dump(self.predictions, file, ensure_ascii=False, indent=4)
+
+    def show_saved_data(self):
+        if self.radioButton.isChecked():
+            self.hmsize = 10
+            if self.parameter ==16:# MRAM saved data
+                read_file_path = "LeNet5-2025-01-21-14:23:00.txt"
+            else:
+                read_file_path = ""
+        elif self.radioButton_2.isChecked():
+            self.hmsize = 10
+            if self.parameter ==16:
+                read_file_path = "FC3-2025-01-21-13:30:12.txt"
+            else:
+                read_file_path = ""
+        elif self.radioButton_3.isChecked():
+            self.hmsize = 11
+            if self.parameter ==16:
+                read_file_path = "SNN-2025-01-21-14:38:50.txt"
+            else:
+                read_file_path = ""
+        
+        # 从 txt 文件读取字典
+        with open(read_file_path, "r", encoding="utf-8") as file:
+            self.saved_predictions = json.load(file)
+        # 初始化一个10x10的矩阵，表示10个类别的混淆矩阵
+        confusion_matrix = np.zeros((self.hmsize, self.hmsize), dtype=int)
+        # 遍历每一张图片的预测结果
+        for image_name, data in self.saved_predictions.items():
+            true_label = data["label"]
+            predicted_label = data["predicted"]
+            # 更新混淆矩阵的对应位置
+            confusion_matrix[true_label][predicted_label] += 1
+        # 绘制热力图
+        self.draw_heatmap(confusion_matrix)
+        sum = 0
+        for i in range(self.hmsize):
+            sum += confusion_matrix[i][i]
+        sum = sum/len(self.saved_predictions)
+        print(sum)
+        self.textBrowser.append(f"Accuracy: {sum*100:.2f}%")
+
+            
     
     def kill_process(self):
         if self.process:

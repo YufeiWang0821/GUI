@@ -1,0 +1,1154 @@
+{
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user26_fluorescent_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user26_fluorescent_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user25_led_0.txt": {
+        "label": 0,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user26_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user24_fluorescent_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user25_fluorescent_0.txt": {
+        "label": 0,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user24_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user26_natural_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user27_fluorescent_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user27_fluorescent_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user27_natural_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user24_fluorescent_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user27_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user28_fluorescent_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user28_fluorescent_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user28_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user28_natural_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user29_natural_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user29_fluorescent_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user29_fluorescent_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user28_lab_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user29_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user29_lab_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user26_lab_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user25_fluorescent_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user25_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user26_fluorescent_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user26_fluorescent_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user26_natural_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user26_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user24_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user27_fluorescent_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user24_fluorescent_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user27_fluorescent_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user27_natural_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user27_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user29_fluorescent_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user28_fluorescent_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user28_fluorescent_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user24_fluorescent_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user29_fluorescent_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user28_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user28_natural_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user29_natural_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user29_led_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user29_lab_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user28_lab_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/1/user26_lab_0.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user26_fluorescent_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user25_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user26_natural_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user26_fluorescent_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user24_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user25_fluorescent_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user26_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user24_fluorescent_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user27_natural_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user27_fluorescent_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user24_fluorescent_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user27_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user27_fluorescent_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user29_fluorescent_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user29_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user29_natural_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user28_fluorescent_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user28_natural_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user29_fluorescent_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user28_fluorescent_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user28_led_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user29_lab_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user28_lab_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/2/user26_lab_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user26_fluorescent_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user25_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user26_fluorescent_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user25_fluorescent_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user26_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user26_natural_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user24_fluorescent_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user27_fluorescent_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user27_fluorescent_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user27_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user24_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user28_fluorescent_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user27_natural_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user28_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user24_fluorescent_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user28_natural_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user28_fluorescent_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user29_fluorescent_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user29_fluorescent_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user29_natural_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user29_led_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user28_lab_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user29_lab_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/3/user26_lab_0.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user25_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user26_fluorescent_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user25_fluorescent_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user26_fluorescent_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user26_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user26_natural_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user27_natural_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user27_fluorescent_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user27_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user27_fluorescent_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user24_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user24_fluorescent_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user28_fluorescent_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user28_fluorescent_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user24_fluorescent_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user28_natural_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user28_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user29_fluorescent_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user29_fluorescent_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user29_led_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user29_natural_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user28_lab_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user29_lab_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/4/user26_lab_0.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user26_fluorescent_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user25_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user26_fluorescent_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user25_fluorescent_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user26_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user26_natural_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user27_fluorescent_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user27_fluorescent_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user24_fluorescent_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user24_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user27_natural_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user27_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user28_fluorescent_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user28_fluorescent_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user29_fluorescent_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user28_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user29_fluorescent_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user24_fluorescent_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user28_natural_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user29_led_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user29_natural_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user29_lab_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user26_lab_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/5/user28_lab_0.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user25_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user26_fluorescent_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user26_fluorescent_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user26_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user26_natural_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user25_fluorescent_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user27_fluorescent_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user27_fluorescent_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user27_natural_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user27_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user24_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user24_fluorescent_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user28_fluorescent_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user28_fluorescent_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user28_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user29_fluorescent_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user24_fluorescent_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user29_fluorescent_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user29_led_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user28_natural_0.txt": {
+        "label": 7,
+        "predicted": 6
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user29_natural_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user28_lab_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user29_lab_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/6/user26_lab_0.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_fluorescent_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_fluorescent_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user25_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_fluorescent_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user25_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user25_fluorescent_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user25_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_natural_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user24_fluorescent_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user24_fluorescent_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user24_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user24_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_natural_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_fluorescent_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_fluorescent_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_natural_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_fluorescent_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user24_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user24_fluorescent_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_fluorescent_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_fluorescent_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user27_natural_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_fluorescent_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_fluorescent_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_natural_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_natural_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_natural_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_fluorescent_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_fluorescent_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_natural_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_lab_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_lab_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user29_lab_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user28_lab_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_lab_0.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/7/user26_lab_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user26_fluorescent_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user26_fluorescent_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user26_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user24_fluorescent_led_0.txt": {
+        "label": 9,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user25_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user27_fluorescent_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user27_natural_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user27_fluorescent_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user24_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user28_fluorescent_led_0.txt": {
+        "label": 9,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user28_fluorescent_0.txt": {
+        "label": 9,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user25_fluorescent_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user26_natural_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user27_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user28_led_0.txt": {
+        "label": 9,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user28_natural_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user24_fluorescent_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user29_fluorescent_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user29_natural_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user29_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user29_fluorescent_led_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user28_lab_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user26_lab_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/8/user29_lab_0.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user25_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user24_fluorescent_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user25_fluorescent_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user26_fluorescent_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user26_led_0.txt": {
+        "label": 10,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user24_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user27_fluorescent_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user26_natural_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user26_fluorescent_led_0.txt": {
+        "label": 10,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user27_fluorescent_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user27_natural_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user27_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user28_fluorescent_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user28_fluorescent_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user28_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user24_fluorescent_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user28_natural_0.txt": {
+        "label": 10,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user29_fluorescent_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user29_natural_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user29_fluorescent_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user29_led_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user28_lab_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user29_lab_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/9/user26_lab_0.txt": {
+        "label": 10,
+        "predicted": 10
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user26_fluorescent_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user26_fluorescent_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user26_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user26_natural_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user25_fluorescent_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user27_fluorescent_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user24_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user27_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user25_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user29_fluorescent_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user27_natural_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user24_fluorescent_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user27_fluorescent_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user29_fluorescent_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user28_fluorescent_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user28_fluorescent_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user29_natural_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user29_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user28_natural_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user28_led_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user29_lab_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user26_lab_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user24_fluorescent_0.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/10/user28_lab_0.txt": {
+        "label": 2,
+        "predicted": 2
+    }
+}
