@@ -143,6 +143,7 @@ class Draw(QWidget):
         self.confirm_button.clicked.connect(self.on_confirm)
         self.recgonize_button.clicked.connect(self.recognize)
         self.clear_button.clicked.connect(self.drawing_area.clear)
+        self.clear_button.clicked.connect(self.clear_label)
 
         layout = QVBoxLayout()
         layout.addWidget(self.drawing_area)
@@ -158,6 +159,9 @@ class Draw(QWidget):
         self.drawing_area.process_and_save()
         self.info_label.setText(f"图像已保存为图片并处理成矩阵 ({self.current_time})")
 
+    def clear_label(self):
+        self.output_label.setText(f"数字识别为：")
+
     def recognize(self):
         #调用程序进行识别
         # 调用可执行文件并获取输出
@@ -165,6 +169,7 @@ class Draw(QWidget):
         try:
             result = subprocess.run(['sudo', exe_file, 'true'], capture_output=True, text=True, check=True)
             output = result.stdout  # 获取可执行文件的标准输出
+            print(output)
             predicted_match = re.search(r'Predicted:\s(\d+)', output)
             predicted_match_value = predicted_match.group(1) if predicted_match else "unkown"
             self.output_label.setText(f"数字识别为：{predicted_match_value} ({self.current_time})")

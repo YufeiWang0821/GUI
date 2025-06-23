@@ -1,0 +1,10 @@
+{
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user26_fluorescent_0.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/test_txt/0/user26_fluorescent_led_0.txt": {
+        "label": 0,
+        "predicted": 0
+    }
+}

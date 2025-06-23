@@ -144,7 +144,7 @@ class Ui_Compiler(object):
         font.setPointSize(10)
         self.input_line.setFont(font)
         self.input_line.setStyleSheet("background-color: #ffffff; border: 1px solid #cccccc; padding: 10px;")
-        self.input_line.textChanged.connect(self.update_image)  # 当输入框内容改变时更新图片
+        self.input_line.returnPressed.connect(self.update_image)  # 按下回车时更新图片
         self.left_layout.addWidget(self.input_line)
         #左侧组件设置
         self.image_label.setFixedWidth(leftlayout_width)
@@ -153,7 +153,7 @@ class Ui_Compiler(object):
         self.horizontalLayout.addLayout(self.left_layout)
 
         # 热力图组件
-        self.figure = plt.figure(facecolor="#f5f5f5")
+        self.figure = plt.figure(0, facecolor="#f5f5f5")
         self.canvas = FigureCanvas(self.figure)
         # 将热力图组件放入一个QWidget容器中
         self.canvas_widget = QtWidgets.QWidget(self.layoutWidget)
@@ -315,7 +315,7 @@ class Ui_Compiler(object):
     def update_image(self):
         # 清空图片
         self.image_label.clear()
-
+        use_saved_pre = False
         # 检查 predictions 是否为空
         if not self.predictions:
             if self.saved_predictions:
@@ -332,13 +332,59 @@ class Ui_Compiler(object):
         # 检查序号是否合法
         if self.radioButton.isChecked():
             dataset_name = "CIFAR10"
+            self.app = "LeNet5"
         elif self.radioButton_2.isChecked():
             dataset_name = "MNIST"
+            self.app = "FC3"
         else:
             self.info_label.setText("错误：当前选项没有可显示图片！")
 
         # 如果序号合法，显示对应的图片和预测数据
-        image_path = f"data/{dataset_name}/test_{image_index}.png"
+        try:
+            image_path = f"data/{dataset_name}/test_{image_index}.png"
+        except:
+            # self.info_label.setText("SNN has no images")
+            pred = self.predictions if not use_saved_pre else self.saved_predictions
+            keys = list(pred.keys())
+            values = list(pred.values())
+            try:
+                print(keys[image_index])
+            except:
+                self.info_label.setText(f"not yet inferred")
+                return
+            match = re.search(r"(\d+)/(.*)\.txt", keys[image_index])
+            print(match.groups())
+
+            if match:
+                id, name = match.groups()
+                file_name = "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/frames_number_16_split_by_number/test/"+str(id)+"/"+name+".npz"
+                data = np.load(file_name)
+                frames = data['frames']
+
+                self.info_label.setText(f"{values[image_index]}")
+                plt.figure(1)
+                plt.clf()
+                for i in range(16):
+                    plt.imshow(frames[i][0]+frames[i][1], cmap="jet")
+                    plt.grid(False)
+                    plt.xticks([])
+                    plt.yticks([])
+                    plt.show()
+                    plt.pause(0.1)
+
+            return
+        cifar10 = {
+            0 : "airplane",
+            1 : "automobile",
+            2 : "bird",
+            3 : "cat",
+            4 : "deer",
+            5 : "dog",
+            6 : "frog",
+            7 : "horse",
+            8 : "ship",
+            9 : "truck"
+        }
         try:
             # 尝试加载图片
             pixmap = QtGui.QPixmap(image_path)
@@ -353,10 +399,18 @@ class Ui_Compiler(object):
         # 显示对应的预测数据
         try:
             if(use_saved_pre):
+                print("saved predictions")
                 prediction_data = self.saved_predictions[f"test_{image_index}.txt"]
             else:
+                print("predictions")
                 prediction_data = self.predictions[f"test_{image_index}.txt"]
-            self.info_label.setText(f"{prediction_data}")
+            print(self.app)
+            if(self.app == "FC3"):
+                self.info_label.setText(f"{prediction_data}")
+            elif(self.app == "LeNet5"):
+                print("lenet5")
+                self.info_label.setText(f"'label': {prediction_data['label']}({cifar10[prediction_data['label']]}),\n'predicted': {prediction_data['predicted']}({cifar10[prediction_data['predicted']]})")
+                # self.info_label.setText(f"'label': {cifar10[prediction_data['label']]},\n'predicted': {cifar10[prediction_data['predicted']]}")
         except:
             self.info_label.setText("Not yet inferred.")
             return
@@ -399,6 +453,14 @@ class Ui_Compiler(object):
             confusion_matrix[true_label][predicted_label] += 1
         # 绘制热力图
         self.draw_heatmap(confusion_matrix)
+        sum = 0
+        for i in range(self.hmsize):
+            sum += confusion_matrix[i][i]
+        sum = sum/len(self.saved_predictions)
+        print(sum)
+        self.textBrowser.append(f"Accuracy: {sum*100:.2f}%")
+
+            
     
     def kill_process(self):
         if self.process:
