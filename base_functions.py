@@ -116,10 +116,10 @@ class Ui_base(object):
         self.radioButton_10.setStyleSheet("color: #333333;")
         self.verticalLayout_2.addWidget(self.radioButton_10)
         #
-        self.radioButton_3 = QtWidgets.QRadioButton(self.layoutWidget)
-        self.radioButton_3.setObjectName("radioButton_3")
-        self.radioButton_3.setStyleSheet("color: #333333;")
-        self.verticalLayout_2.addWidget(self.radioButton_3)
+        # self.radioButton_3 = QtWidgets.QRadioButton(self.layoutWidget)
+        # self.radioButton_3.setObjectName("radioButton_3")
+        # self.radioButton_3.setStyleSheet("color: #333333;")
+        # self.verticalLayout_2.addWidget(self.radioButton_3)
         #
         self.verticalLayout_6.addLayout(self.verticalLayout_2)
 
@@ -218,7 +218,7 @@ class Ui_base(object):
         self.radioButton_12.setFont(font)
         self.radioButton_11.setFont(font)
         self.radioButton_10.setFont(font)
-        self.radioButton_3.setFont(font)
+        #self.radioButton_3.setFont(font)
         self.label_3.setFont(font)
         self.radioButton_2.setFont(font)
         self.radioButton_13.setFont(font)
@@ -233,7 +233,7 @@ class Ui_base(object):
         # button集合
         self.button_group = QtWidgets.QButtonGroup(Form)
         self.button_group.addButton(self.radioButton_2, 2)
-        self.button_group.addButton(self.radioButton_3, 3)
+        #self.button_group.addButton(self.radioButton_3, 3)
         self.button_group.addButton(self.radioButton_4, 4)
         self.button_group.addButton(self.radioButton_5, 5)
         self.button_group.addButton(self.radioButton_6, 6)
@@ -268,7 +268,7 @@ class Ui_base(object):
         self.radioButton_12.setText(_translate("Form", "容量"))
         self.radioButton_11.setText(_translate("Form", "1、8、16bit位宽乘加计算"))
         self.radioButton_10.setText(_translate("Form", "算力"))
-        self.radioButton_3.setText(_translate("Form", "能效"))
+        #self.radioButton_3.setText(_translate("Form", "能效"))
         self.label_3.setText(_translate("Form", "IR-Drop"))
         self.radioButton_2.setText(_translate("Form", "Binary FC-3算法识别准确率"))
         self.radioButton_13.setText(_translate("Form", "Binary LeNet-5算法识别准确率"))

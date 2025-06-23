@@ -297,7 +297,7 @@ class Ui_Compiler(object):
             return
         # 检查序号是否合法
         if self.radioButton.isChecked():
-            dataset_name = "CIFAR10"
+            dataset_name = "cifar10/images"
         elif self.radioButton_2.isChecked():
             dataset_name = "MNIST"
         else:

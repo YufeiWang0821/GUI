@@ -76,17 +76,17 @@ class Ui_Sh(object):
         if parameter == 3:
             self.executable = ""# 能效
         elif parameter == 10:
-            self.executable = ""# 算力
+            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/TOPSTest"# 算力
         elif parameter == 11:
-            self.executable = ""# 乘加计算
+            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/computeCorrectnessTest"# 乘加计算
         elif parameter == 12:
-            self.executable = ""# 容量
+            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/allRRAMTest"# 容量
         else:
             return
         
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
-        self.process.start( [self.executable])
+        self.process.start("sudo", [self.executable])
 
     def run_script(self, parameter):
         if self.process:
