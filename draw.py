@@ -165,7 +165,7 @@ class Draw(QWidget):
     def recognize(self):
         #调用程序进行识别
         # 调用可执行文件并获取输出
-        exe_file = '../build/bin/fc3-quan-run'  # 替换为实际可执行文件路径
+        exe_file = '../build/bin/fc3-quan-run-mram' if chip=="MRAM" else '../build/bin/fc3-quan-run-reram'# 替换为实际可执行文件路径
         try:
             result = subprocess.run(['sudo', exe_file, 'true'], capture_output=True, text=True, check=True)
             output = result.stdout  # 获取可执行文件的标准输出

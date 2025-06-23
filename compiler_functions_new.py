@@ -211,28 +211,31 @@ class Ui_Compiler(object):
         self.current_time = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
         # Determine which dataset is selected
         if self.radioButton.isChecked():
-            self.executable = "../build/bin/lenet5-quan-run"  # Executable for Cifar-10
+            self.executable = "../build/bin/lenet5-quan-run-mram" if self.chip == "MRAM" else "../build/bin/lenet5-quan-run-reram"  # Executable for Cifar-10
+            self.exe_para=""
             self.app = "LeNet5"
             self.hmsize = 10
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
             self.timer_started = False
         elif self.radioButton_2.isChecked():
-            self.executable = "../build/bin/fc3-quan-run"  # Executable for MNIST
+            self.executable = "../build/bin/fc3-quan-run-mram" if self.chip == "MRAM" else "../build/bin/fc3-quan-run-reram"  # Executable for MNIST
+            self.exe_para="32 false"
             self.app = "FC3"
             self.hmsize = 10
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
             self.timer_started = False
         elif self.radioButton_3.isChecked():
-            self.executable = "../build/bin/snn-quan-run"
+            self.executable = "../build/bin/snn-quan-run-mram" if self.chip == "MRAM" else "../build/bin/snn-quan-run-reram"
+            self.exe_para="8"
             self.app = "SNN"
             self.hmsize = 11
             self.run_executable(self.executable)
             self.timer.stop()  # 停止定时器
             self.timer_started = False
         elif self.radioButton_4.isChecked():
-            self.subWindow = Draw()  # 创建子界面实例
+            self.subWindow = Draw(self.chip)  # 创建子界面实例
             self.subWindow.show()  # 显示子界面
         else:
             self.textBrowser.append("请先选择一个功能")
@@ -248,7 +251,12 @@ class Ui_Compiler(object):
         # 创建 QProcess
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
-        self.process.start("sudo", [executable])
+        print(executable)
+        #self.process.start("sudo", [executable])
+        if self.app == "LeNet5":
+            self.process.start("sudo", [executable])
+        else:
+            self.process.start("sudo", [executable, self.exe_para])
         self.process.finished.connect(self.on_finished)
         # if not self.timer_started:
         #     print("timer started")
@@ -331,7 +339,7 @@ class Ui_Compiler(object):
             return
         # 检查序号是否合法
         if self.radioButton.isChecked():
-            dataset_name = "cifar10/images"
+            dataset_name = "CIFAR10"
             self.app = "LeNet5"
         elif self.radioButton_2.isChecked():
             dataset_name = "MNIST"
@@ -348,16 +356,18 @@ class Ui_Compiler(object):
             keys = list(pred.keys())
             values = list(pred.values())
             try:
+                print("key")
                 print(keys[image_index])
             except:
                 self.info_label.setText(f"not yet inferred")
                 return
             match = re.search(r"(\d+)/(.*)\.txt", keys[image_index])
+            print("matchgroups")
             print(match.groups())
 
             if match:
                 id, name = match.groups()
-                file_name = "/home/zhaoyuhang/work_space/BYO-PiM/test_network/SNN-quan/data/frames_number_16_split_by_number/test/"+str(id)+"/"+name+".npz"
+                file_name = "DVSGesture_frames/"+str(id)+"/"+name+".npz"
                 data = np.load(file_name)
                 frames = data['frames']
 
@@ -423,24 +433,25 @@ class Ui_Compiler(object):
     def show_saved_data(self):
         if self.radioButton.isChecked():
             self.hmsize = 10
-            if self.parameter ==16:# MRAM saved data
+            if self.parameter ==16 or self.parameter ==17:# MRAM saved data
                 read_file_path = "LeNet5-2025-01-21-14:23:00.txt"
             else:
                 read_file_path = ""
         elif self.radioButton_2.isChecked():
             self.hmsize = 10
-            if self.parameter ==16:
+            if self.parameter ==16 or self.parameter ==17:
                 read_file_path = "FC3-2025-01-21-13:30:12.txt"
             else:
                 read_file_path = ""
         elif self.radioButton_3.isChecked():
             self.hmsize = 11
-            if self.parameter ==16:
+            if self.parameter ==16 or self.parameter ==17:
                 read_file_path = "SNN-2025-01-21-14:38:50.txt"
             else:
                 read_file_path = ""
         
         # 从 txt 文件读取字典
+        print(read_file_path)
         with open(read_file_path, "r", encoding="utf-8") as file:
             self.saved_predictions = json.load(file)
         # 初始化一个10x10的矩阵，表示10个类别的混淆矩阵

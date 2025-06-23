@@ -1,0 +1,402 @@
+{
+    "test_0.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_2.txt": {
+        "label": 8,
+        "predicted": 1
+    },
+    "test_3.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_4.txt": {
+        "label": 6,
+        "predicted": 4
+    },
+    "test_5.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_6.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "test_7.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_8.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_9.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "test_10.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_11.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_12.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "test_13.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "test_14.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_15.txt": {
+        "label": 8,
+        "predicted": 6
+    },
+    "test_16.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "test_17.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "test_18.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_19.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_20.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "test_21.txt": {
+        "label": 0,
+        "predicted": 1
+    },
+    "test_22.txt": {
+        "label": 4,
+        "predicted": 0
+    },
+    "test_23.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_24.txt": {
+        "label": 5,
+        "predicted": 4
+    },
+    "test_25.txt": {
+        "label": 2,
+        "predicted": 6
+    },
+    "test_26.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "test_27.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_28.txt": {
+        "label": 9,
+        "predicted": 1
+    },
+    "test_29.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_30.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_31.txt": {
+        "label": 5,
+        "predicted": 3
+    },
+    "test_32.txt": {
+        "label": 4,
+        "predicted": 2
+    },
+    "test_33.txt": {
+        "label": 5,
+        "predicted": 3
+    },
+    "test_34.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_35.txt": {
+        "label": 2,
+        "predicted": 3
+    },
+    "test_36.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "test_37.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "test_38.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_39.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "test_40.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "test_41.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_42.txt": {
+        "label": 5,
+        "predicted": 5
+    },
+    "test_43.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_44.txt": {
+        "label": 0,
+        "predicted": 7
+    },
+    "test_45.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_46.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_47.txt": {
+        "label": 9,
+        "predicted": 5
+    },
+    "test_48.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "test_49.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_50.txt": {
+        "label": 9,
+        "predicted": 7
+    },
+    "test_51.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_52.txt": {
+        "label": 0,
+        "predicted": 7
+    },
+    "test_53.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_54.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_55.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_56.txt": {
+        "label": 7,
+        "predicted": 5
+    },
+    "test_57.txt": {
+        "label": 7,
+        "predicted": 3
+    },
+    "test_58.txt": {
+        "label": 4,
+        "predicted": 5
+    },
+    "test_59.txt": {
+        "label": 6,
+        "predicted": 3
+    },
+    "test_60.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "test_61.txt": {
+        "label": 3,
+        "predicted": 5
+    },
+    "test_62.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_63.txt": {
+        "label": 3,
+        "predicted": 0
+    },
+    "test_64.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_65.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "test_66.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "test_67.txt": {
+        "label": 2,
+        "predicted": 0
+    },
+    "test_68.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_69.txt": {
+        "label": 7,
+        "predicted": 9
+    },
+    "test_70.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "test_71.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_72.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_73.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_74.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_75.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "test_76.txt": {
+        "label": 9,
+        "predicted": 0
+    },
+    "test_77.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_78.txt": {
+        "label": 3,
+        "predicted": 3
+    },
+    "test_79.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_80.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_81.txt": {
+        "label": 1,
+        "predicted": 9
+    },
+    "test_82.txt": {
+        "label": 1,
+        "predicted": 1
+    },
+    "test_83.txt": {
+        "label": 7,
+        "predicted": 7
+    },
+    "test_84.txt": {
+        "label": 2,
+        "predicted": 3
+    },
+    "test_85.txt": {
+        "label": 5,
+        "predicted": 7
+    },
+    "test_86.txt": {
+        "label": 2,
+        "predicted": 2
+    },
+    "test_87.txt": {
+        "label": 7,
+        "predicted": 8
+    },
+    "test_88.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_89.txt": {
+        "label": 9,
+        "predicted": 9
+    },
+    "test_90.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_91.txt": {
+        "label": 3,
+        "predicted": 4
+    },
+    "test_92.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "test_93.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_94.txt": {
+        "label": 4,
+        "predicted": 4
+    },
+    "test_95.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_96.txt": {
+        "label": 6,
+        "predicted": 6
+    },
+    "test_97.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_98.txt": {
+        "label": 0,
+        "predicted": 0
+    },
+    "test_99.txt": {
+        "label": 7,
+        "predicted": 7
+    }
+}

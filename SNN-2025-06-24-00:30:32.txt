@@ -1,0 +1,34 @@
+{
+    "8/user28_fluorescent_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "8/user26_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "8/user26_natural_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "8/user24_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "8/user26_fluorescent_led_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "8/user29_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "8/user27_fluorescent_1.txt": {
+        "label": 8,
+        "predicted": 8
+    },
+    "8/user27_fluorescent_led_0.txt": {
+        "label": 8,
+        "predicted": 8
+    }
+}

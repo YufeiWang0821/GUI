@@ -24,3 +24,5 @@ output_matrix.txt
 *.log
 
 bin/*
+
+DVSGesture_frames

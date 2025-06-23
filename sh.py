@@ -76,18 +76,21 @@ class Ui_Sh(object):
         if parameter == 3:
             self.executable = ""# 能效
         elif parameter == 10:
-            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/TOPSTest/home/luhongye/workspaces/software/GUI/bin/TOPSTest"# 算力
+            #self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/TOPSTest"# 算力
+            self.executable = "/home/luhongye/workspaces/software/GUI/bin/TOPSTest"
         elif parameter == 11:
-            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/computeCorrectnessTest/home/luhongye/workspaces/software/GUI/bin/computeCorrectnessTest"# 乘加计算
+            #self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/computeCorrectnessTest"# 乘加计算
+            self.executable = "/home/luhongye/workspaces/software/GUI/bin/computeCorrectnessTest"
         elif parameter == 12:
-            self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/allRRAMTest/home/luhongye/workspaces/software/GUI/bin/allRRAMTest"# 容量
+            #self.executable = "/home/zhaoyuhang/work_space/BYO-PiM/GUI/bin/allRRAMTest"# 容量
+            self.executable = "/home/luhongye/workspaces/software/GUI/bin/allRRAMTest"
         else:
             return
         
         self.process = QtCore.QProcess(self)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
         print(self.executable)
-        self.process.start("sudo","sudo", [self.executable])
+        self.process.start("sudo",[self.executable])
 
     def run_script(self, parameter):
         if self.process:
@@ -95,7 +98,7 @@ class Ui_Sh(object):
                 self.kill_process()
 
         scripts_dic = {
-            4: "/home/user/workspaces/cpp/MRAM_Driver/tests/mram_test.py",# 容量
+            4: "/home/dengyao/workspace/cpp/MRAM_Driver/test/mram_test.py",# 容量
             5: "test.py",# 乘加计算
             6: "",# 算力
             7: "",# 单阵列核心计算能效
@@ -109,7 +112,7 @@ class Ui_Sh(object):
         self.process.setProcessChannelMode(QtCore.QProcess.MergedChannels)
         self.process.readyReadStandardOutput.connect(self.on_readyReadStandardOutput)
         self.process.finished.connect(self.on_finished)
-        self.process.start("sudo", ["/usr/bin/python3.11", script])# 使用对应环境的python
+        self.process.start("sudo", ["/usr/bin/python3.8", script])# 使用对应环境的python
         if not self.process.waitForStarted():
             print("Error: Fail to start!")
 
